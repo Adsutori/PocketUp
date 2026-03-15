@@ -1,0 +1,177 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}PocketUp{% endblock %}</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+  <!-- Chart.js MUSI być przed main.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVBAR
+  ============================================================ -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+
+      <a href="#home" class="nav-logo" aria-label="PocketUp home">
+        <div class="nav-logo-icon" aria-hidden="true">💰</div>
+        PocketUp
+      </a>
+
+      {% if user.is_authenticated %}
+        <!-- authenticated nav tutaj -->
+      {% else %}
+        <ul class="nav-links" role="list">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#savings">Savings</a></li>
+          <li><a href="#ai">AI Tools</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#security">Security</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="#" class="nav-login">Log In</a>
+          <a href="#cta" class="btn btn-primary">Get Started</a>
+        </div>
+      {% endif %}
+
+      <div class="hamburger" id="hamburger"
+           role="button" aria-label="Toggle menu"
+           tabindex="0" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+    <a href="#features" onclick="closeMobileNav()">Features</a>
+    <a href="#savings"  onclick="closeMobileNav()">Savings</a>
+    <a href="#ai"       onclick="closeMobileNav()">AI Tools</a>
+    <a href="#pricing"  onclick="closeMobileNav()">Pricing</a>
+    <a href="#security" onclick="closeMobileNav()">Security</a>
+    <a href="#"         onclick="closeMobileNav()">Log In</a>
+    <!-- ✅ POPRAWIONY style — jedna linia, bez duplikatu -->
+    <a href="#cta"
+       class="btn btn-primary"
+       style="text-align:center; margin-top:4px;"
+       onclick="closeMobileNav()">
+      Get Started Free
+    </a>
+  </nav>
+
+  <!-- ============================================================
+       MAIN CONTENT
+  ============================================================ -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <a href="#home" class="nav-logo" aria-label="PocketUp home">
+            <div class="nav-logo-icon" aria-hidden="true">💰</div>
+            PocketUp
+          </a>
+          <p>Smart personal finance for people who want to keep more of what they earn.</p>
+          <div class="footer-social" aria-label="Social media links">
+            <a href="#" class="social-icon" aria-label="Twitter / X">𝕏</a>
+            <a href="#" class="social-icon" aria-label="Instagram">📸</a>
+            <a href="#" class="social-icon" aria-label="LinkedIn">in</a>
+            <a href="#" class="social-icon" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul role="list">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#ai">AI Tools</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#">Changelog</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul role="list">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press Kit</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul role="list">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="#">Security</a></li>
+            <li><a href="#">GDPR</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 PocketUp Technologies Ltd. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JS — main.js NA KOŃCU BODY, po Chart.js
+  ============================================================ -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+
+<!-- TEST DIAGNOSTYCZNY — usuń po naprawie -->
+<script>
+  console.log('=== DIAGNOSTYKA POCKETUP ===');
+  console.log('Chart.js załadowany:', typeof Chart !== 'undefined');
+  console.log('DOM gotowy:', document.readyState);
+
+  const featGrid = document.querySelector('.features-grid');
+  console.log('features-grid istnieje:', !!featGrid);
+
+  if (featGrid) {
+    const cards = featGrid.querySelectorAll('.feat-card');
+    console.log('Liczba kart feat-card:', cards.length);
+    cards.forEach((c, i) => {
+      console.log(`Karta ${i} opacity:`, getComputedStyle(c).opacity,
+                  'transform:', getComputedStyle(c).transform,
+                  'klasy:', c.className);
+    });
+  }
+
+  const reveals = document.querySelectorAll('.reveal');
+  console.log('Elementy .reveal na stronie:', reveals.length);
+</script>
+
+
+
+</body>
+</html>

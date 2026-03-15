@@ -1,0 +1,869 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block content %}
+    <!-- ============================================================
+        HERO SECTION
+    ============================================================ -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+    <div class="hero-blob hero-blob-1" aria-hidden="true"></div>
+    <div class="hero-blob hero-blob-2" aria-hidden="true"></div>
+
+    <div class="container">
+        <div class="hero-inner">
+
+        <!-- Copy -->
+        <div class="hero-copy">
+            <div class="hero-badge" role="status">
+            <span class="hero-badge-pulse" aria-hidden="true"></span>
+            AI-Powered Personal Finance · Now Live
+            </div>
+
+            <h1 class="hero-title" id="hero-title">
+            Keep More Money<br>
+            <span class="grad">in Your Pocket.</span>
+            </h1>
+
+            <p class="hero-sub">
+            PocketUp helps you track spending, save smarter, and grow your money with AI-powered insights — all in one beautifully simple app.
+            </p>
+
+            <div class="hero-actions">
+            <a href="#cta"          class="btn btn-primary btn-lg">🚀 Get Started Free</a>
+            <a href="#how-it-works" class="btn btn-outline  btn-lg">▶ See How It Works</a>
+            </div>
+
+            <div class="hero-trust">
+            <div class="hero-avatars" aria-label="User avatars">
+                <span style="background:linear-gradient(135deg,#1DB954,#16a34a);" title="User JK">JK</span>
+                <span style="background:linear-gradient(135deg,#38BDF8,#0284c7);" title="User ML">ML</span>
+                <span style="background:linear-gradient(135deg,#a855f7,#7c3aed);" title="User SR">SR</span>
+                <span style="background:linear-gradient(135deg,#f59e0b,#d97706);" title="More users">+</span>
+            </div>
+            <p class="hero-trust-text">
+                Trusted by <strong>12,000+</strong> smart savers across Europe
+            </p>
+            </div>
+        </div>
+
+        <!-- Dashboard Visual -->
+        <div class="hero-visual" aria-hidden="true">
+
+            <div class="float-pill float-pill-1">
+            <div class="fp-icon" style="background:var(--primary-light);">💸</div>
+            <div>
+                <div style="font-size:.68rem;color:var(--text-muted);">Saved this month</div>
+                <div style="color:var(--primary);font-weight:800;">+€840</div>
+            </div>
+            </div>
+
+            <div class="dash-wrap">
+            <div class="dash-top">
+                <div>
+                <div class="dash-greeting">Good morning,</div>
+                <div class="dash-name">Alex 👋</div>
+                </div>
+                <div class="dash-notif">
+                🔔
+                <div class="dash-notif-dot"></div>
+                </div>
+            </div>
+
+            <div class="dash-balance-card">
+                <div class="dash-balance-label">Total Balance</div>
+                <div class="dash-balance-amount" id="heroBalance">€8,420</div>
+                <span class="dash-balance-change">↑ +12.4% this month</span>
+            </div>
+
+            <div class="dash-row">
+                <div class="dash-mini-card">
+                <div class="dash-mini-icon">📥</div>
+                <div class="dash-mini-label">Income</div>
+                <div class="dash-mini-value green">€3,200</div>
+                </div>
+                <div class="dash-mini-card">
+                <div class="dash-mini-icon">📤</div>
+                <div class="dash-mini-label">Expenses</div>
+                <div class="dash-mini-value red">€2,360</div>
+                </div>
+            </div>
+
+            <div class="dash-chart-wrap">
+                <div class="dash-chart-label">Monthly Overview</div>
+                <div class="dash-chart-canvas">
+                <canvas id="heroMiniChart" height="90"></canvas>
+                </div>
+            </div>
+
+            <div class="dash-ai-tip">
+                <div class="dash-ai-tip-icon">🤖</div>
+                <div class="dash-ai-tip-text">
+                <strong>AI Tip:</strong> Cut dining out by 20% and save an extra <strong style="color:var(--primary);">€64/month</strong>.
+                </div>
+            </div>
+            </div>
+
+            <div class="float-pill float-pill-2">
+            <div class="fp-icon" style="background:var(--accent-light);">🎯</div>
+            <div>
+                <div style="font-size:.68rem;color:var(--text-muted);">Savings goal</div>
+                <div style="color:var(--accent-dark);font-weight:800;">84% reached</div>
+            </div>
+            </div>
+
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- ============================================================
+        CORE FEATURES
+    ============================================================ -->
+    <section class="section core-features" id="features" aria-labelledby="features-title">
+    <div class="container">
+        <header class="section-header">
+        <span class="chip">✨ Core Features</span>
+        <h2 class="section-title" id="features-title">
+            Everything you need to<br><span class="grad">master your money</span>
+        </h2>
+        <p class="section-sub">
+            Seven powerful tools built into one elegant app — designed to make personal finance effortless.
+        </p>
+        </header>
+
+        <div class="features-grid">
+
+        <article class="feat-card reveal d1">
+            <div class="feat-icon-wrap ic-green" aria-hidden="true">👤</div>
+            <h3 class="feat-title">User Registration & Login</h3>
+            <p class="feat-desc">Secure sign-up and login with email or social accounts. Your data is encrypted and protected from day one.</p>
+        </article>
+
+        <article class="feat-card reveal d2">
+            <div class="feat-icon-wrap ic-blue" aria-hidden="true">📊</div>
+            <h3 class="feat-title">Personal Finance Dashboard</h3>
+            <p class="feat-desc">A beautiful overview of your entire financial life — balances, income, expenses, and savings goals in one glance.</p>
+        </article>
+
+        <article class="feat-card reveal d3">
+            <div class="feat-icon-wrap ic-orange" aria-hidden="true">✏️</div>
+            <h3 class="feat-title">Add & Edit Expenses</h3>
+            <p class="feat-desc">Log expenses manually in seconds or let AI scan your receipts automatically. Edit, delete, and categorize with ease.</p>
+        </article>
+
+        <article class="feat-card reveal d1">
+            <div class="feat-icon-wrap ic-purple" aria-hidden="true">🏷️</div>
+            <h3 class="feat-title">Expense Categories</h3>
+            <p class="feat-desc">Organize spending into smart categories — food, transport, bills, entertainment, health, and more. Fully customizable.</p>
+        </article>
+
+        <article class="feat-card reveal d2">
+            <div class="feat-icon-wrap ic-teal" aria-hidden="true">📅</div>
+            <h3 class="feat-title">Monthly Income & Expense Summary</h3>
+            <p class="feat-desc">Get a clear monthly breakdown of what came in and what went out. Spot trends and compare month over month.</p>
+        </article>
+
+        <article class="feat-card reveal d3">
+            <div class="feat-icon-wrap ic-pink" aria-hidden="true">📈</div>
+            <h3 class="feat-title">Expense Charts</h3>
+            <p class="feat-desc">Interactive pie charts and monthly bar charts give you a visual understanding of your spending patterns instantly.</p>
+        </article>
+
+        <article class="feat-card reveal d2" style="grid-column: 2;">
+            <div class="feat-icon-wrap ic-green" aria-hidden="true">🤖</div>
+            <h3 class="feat-title">Automatic Categorization</h3>
+            <p class="feat-desc">AI reads your transactions and categorizes them automatically. No more manual sorting — it just works.</p>
+        </article>
+
+        </div>
+    </div>
+    </section>
+
+    <!-- ============================================================
+        SAVINGS FEATURES
+    ============================================================ -->
+    <section class="section savings-section" id="savings" aria-labelledby="savings-title">
+    <div class="container">
+        <header class="section-header">
+        <span class="chip">💰 Savings Tools</span>
+        <h2 class="section-title" id="savings-title">
+            Built to help you<br><span class="grad">save more, every month</span>
+        </h2>
+        <p class="section-sub">
+            PocketUp doesn't just track money — it actively helps you keep more of it with smart savings tools.
+        </p>
+        </header>
+
+        <div class="savings-grid">
+
+        <!-- Left: feature list -->
+        <div class="savings-list">
+
+            <div class="savings-item reveal-left d1">
+            <div class="savings-item-icon ic-green" aria-hidden="true">🧮</div>
+            <div class="savings-item-body">
+                <h4>Net Savings Calculation</h4>
+                <p>Automatically calculates your net savings each month: income minus all expenses. Always know exactly where you stand.</p>
+            </div>
+            </div>
+
+            <div class="savings-item reveal-left d2">
+            <div class="savings-item-icon ic-blue" aria-hidden="true">🎯</div>
+            <div class="savings-item-body">
+                <h4>Savings Goals</h4>
+                <p>Set goals like "Emergency Fund €3,000" or "Holiday €1,500" and track your progress with visual progress bars.</p>
+            </div>
+            </div>
+
+            <div class="savings-item reveal-left d3">
+            <div class="savings-item-icon ic-orange" aria-hidden="true">🔔</div>
+            <div class="savings-item-body">
+                <h4>Budget Limit Alerts</h4>
+                <p>Set monthly spending limits per category. Get notified instantly when you're approaching or exceeding your budget.</p>
+            </div>
+            </div>
+
+            <div class="savings-item reveal-left d4">
+            <div class="savings-item-icon ic-purple" aria-hidden="true">📋</div>
+            <div class="savings-item-body">
+                <h4>Weekly Financial Summaries</h4>
+                <p>Every Monday, receive a personalized summary of last week's spending with AI-powered tips for the week ahead.</p>
+            </div>
+            </div>
+
+            <div class="savings-item reveal-left d5">
+            <div class="savings-item-icon ic-teal" aria-hidden="true">🏆</div>
+            <div class="savings-item-body">
+                <h4>Gamification & Badges</h4>
+                <p>Earn badges for hitting savings milestones. Stay motivated with streaks, progress bars, and weekly challenges.</p>
+            </div>
+            </div>
+
+        </div>
+
+        <!-- Right: visual cards -->
+        <div class="savings-visual">
+
+            <div class="sv-card reveal-right d1">
+            <div class="sv-card-title">🎯 Savings Goals Progress</div>
+            <div class="progress-list">
+                <div class="progress-item">
+                <div class="progress-header">
+                    <span class="progress-name">Emergency Fund</span>
+                    <span class="progress-pct">72%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-width="72%" style="width:0%"></div>
+                </div>
+                </div>
+                <div class="progress-item">
+                <div class="progress-header">
+                    <span class="progress-name">Holiday — Barcelona</span>
+                    <span class="progress-pct">45%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-width="45%" style="width:0%"></div>
+                </div>
+                </div>
+                <div class="progress-item">
+                <div class="progress-header">
+                    <span class="progress-name">New Laptop</span>
+                    <span class="progress-pct">88%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-width="88%" style="width:0%"></div>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="sv-card reveal-right d2">
+            <div class="sv-card-title">🏆 Your Badges</div>
+            <div class="badge-row">
+                <div class="badge-item" title="First Save">
+                <span class="badge-emoji">🌱</span>
+                <span class="badge-name">First Save</span>
+                </div>
+                <div class="badge-item" title="7-Day Streak">
+                <span class="badge-emoji">🔥</span>
+                <span class="badge-name">7-Day Streak</span>
+                </div>
+                <div class="badge-item" title="Budget Master">
+                <span class="badge-emoji">🎯</span>
+                <span class="badge-name">Budget Master</span>
+                </div>
+                <div class="badge-item" title="€500 Saved">
+                <span class="badge-emoji">💎</span>
+                <span class="badge-name">€500 Saved</span>
+                </div>
+                <div class="badge-item locked" title="Locked: €1000 Saved">
+                <span class="badge-emoji">🚀</span>
+                <span class="badge-name">€1K Club</span>
+                </div>
+                <div class="badge-item locked" title="Locked: 30-Day Streak">
+                <span class="badge-emoji">👑</span>
+                <span class="badge-name">30-Day King</span>
+                </div>
+            </div>
+            </div>
+
+            <div class="sv-card reveal-right d3">
+            <div class="sv-card-title">📊 This Week's Snapshot</div>
+            <canvas id="weeklyChart" height="110"></canvas>
+            </div>
+
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- ============================================================
+        AI FEATURES
+    ============================================================ -->
+    <section class="section ai-section" id="ai" aria-labelledby="ai-title">
+    <div class="container">
+        <header class="section-header">
+        <span class="chip chip-dark">🤖 AI-Powered</span>
+        <h2 class="section-title" id="ai-title">
+            Your personal<br><span class="grad">AI finance advisor</span>
+        </h2>
+        <p class="section-sub" style="color:#94a3b8;">
+            PocketUp's AI doesn't just crunch numbers — it understands your habits and gives you actionable advice in plain English.
+        </p>
+        </header>
+
+        <div class="ai-grid">
+
+        <div class="ai-card reveal d1">
+            <div class="ai-card-icon" aria-hidden="true">🔍</div>
+            <h3 class="ai-card-title">AI Spending Analysis</h3>
+            <p class="ai-card-desc">Our AI scans every transaction and identifies patterns, anomalies, and opportunities to save — automatically, every day.</p>
+        </div>
+
+        <div class="ai-card reveal d2">
+            <div class="ai-card-icon" aria-hidden="true">💡</div>
+            <h3 class="ai-card-title">Smart Saving Suggestions</h3>
+            <p class="ai-card-desc">Get personalised, data-driven suggestions like "Switch to a cheaper phone plan and save €18/month" based on your real spending.</p>
+        </div>
+
+        <div class="ai-card reveal d3">
+            <div class="ai-card-icon blue" aria-hidden="true">📆</div>
+            <h3 class="ai-card-title">Weekly & Monthly Insights</h3>
+            <p class="ai-card-desc">Receive beautifully formatted weekly and monthly financial reports with trends, comparisons, and forward-looking predictions.</p>
+        </div>
+
+        <div class="ai-card reveal d4">
+            <div class="ai-card-icon blue" aria-hidden="true">📈</div>
+            <h3 class="ai-card-title">Investment Surplus Advisor</h3>
+            <p class="ai-card-desc">Once your savings goal is on track, AI suggests low-risk investment options for your surplus — tailored to your risk profile.</p>
+        </div>
+
+        <!-- AI Chat -->
+        <div class="ai-chat reveal">
+            <div class="ai-chat-title">💬 AI Financial Chat Assistant</div>
+            <div class="chat-messages" role="log" aria-live="polite">
+
+            <div class="chat-msg user">
+                <div class="chat-avatar user-av" aria-label="You">You</div>
+                <div class="chat-bubble user-bubble">How much did I spend on food this month?</div>
+            </div>
+
+            <div class="chat-msg">
+                <div class="chat-avatar ai-av" aria-label="PocketUp AI">AI</div>
+                <div class="chat-bubble ai-bubble">
+                You spent <strong>€342</strong> on food this month across 28 transactions.
+                That's <strong style="color:#f87171;">↑ 14% more</strong> than last month (€300).
+                Your biggest spend was at <strong>Lidl (€89)</strong> and <strong>Deliveroo (€67)</strong>.
+                </div>
+            </div>
+
+            <div class="chat-msg user">
+                <div class="chat-avatar user-av" aria-label="You">You</div>
+                <div class="chat-bubble user-bubble">How can I reduce it?</div>
+            </div>
+
+            <div class="chat-msg">
+                <div class="chat-avatar ai-av" aria-label="PocketUp AI">AI</div>
+                <div class="chat-bubble ai-bubble">
+                Try limiting takeaways to <strong>2× per week</strong> — that alone could save you
+                <strong style="color:#4ade80;">€40/month</strong>. Also, meal-prepping on Sundays
+                typically reduces grocery waste by ~20%. Want me to set a food budget alert at <strong>€280</strong>?
+                </div>
+            </div>
+
+            </div>
+            <div class="chat-input-row" role="search">
+            <span>Ask anything about your finances…</span>
+            <div class="chat-send" role="button" aria-label="Send message" tabindex="0">➤</div>
+            </div>
+        </div>
+
+        </div>
+
+        <!-- Receipt scanning -->
+        <div style="margin-top:64px; position:relative; z-index:1;">
+        <div class="section-header" style="margin-bottom:40px;">
+            <span class="chip chip-dark">📷 Receipt Scanner</span>
+            <h3 class="section-title" style="color:#fff;font-size:clamp(1.5rem,3vw,2.2rem);">
+            Scan a receipt.<br><span class="grad">Done in 3 seconds.</span>
+            </h3>
+        </div>
+
+        <div class="receipt-steps">
+
+            <div class="rs-card reveal d1">
+            <div class="rs-step-num" aria-hidden="true">1</div>
+            <div class="rs-icon" aria-hidden="true">📸</div>
+            <h4 class="rs-title">Take a Photo</h4>
+            <p class="rs-desc">Open PocketUp and tap the camera icon. Point your phone at any receipt — crumpled, faded, or digital.</p>
+            </div>
+
+            <div class="rs-card reveal d2">
+            <div class="rs-step-num" aria-hidden="true">2</div>
+            <div class="rs-icon" aria-hidden="true">🤖</div>
+            <h4 class="rs-title">AI Reads the Receipt</h4>
+            <p class="rs-desc">Our AI instantly extracts the store name, date, individual items, and total amount. No typing required.</p>
+            </div>
+
+            <div class="rs-card reveal d3">
+            <div class="rs-step-num" aria-hidden="true">3</div>
+            <div class="rs-icon" aria-hidden="true">✅</div>
+            <h4 class="rs-title">Confirm & Add</h4>
+            <p class="rs-desc">Review the detected items and price. Tap <strong style="color:#4ade80;">Add to Expenses</strong> and it's logged instantly with the right category.</p>
+            </div>
+
+        </div>
+        </div>
+
+    </div>
+    </section>
+
+    <!-- ============================================================
+        VISUAL DASHBOARD SECTION
+    ============================================================ -->
+    <section class="section dashboard-section" id="dashboard" aria-labelledby="dashboard-title">
+    <div class="container">
+        <header class="section-header">
+        <span class="chip">📱 Live Dashboard</span>
+        <h2 class="section-title" id="dashboard-title">
+            Your finances,<br><span class="grad">beautifully organised</span>
+        </h2>
+        <p class="section-sub">
+            Everything you need to know about your money — at a glance, in real time.
+        </p>
+        </header>
+
+        <div class="db-grid">
+
+        <!-- Net savings -->
+        <div class="db-card reveal d1">
+            <div class="db-card-header">
+            <span class="db-card-title">Net Savings</span>
+            <span class="db-card-badge badge-green">This Month</span>
+            </div>
+            <div class="db-big-value" id="counterSavings">€0</div>
+            <div class="db-sub-value">Income €3,200 – Expenses €2,360</div>
+            <div class="db-change up">↑ +18% vs last month</div>
+        </div>
+
+        <!-- Total spent -->
+        <div class="db-card reveal d2">
+            <div class="db-card-header">
+            <span class="db-card-title">Total Spent</span>
+            <span class="db-card-badge badge-red">July 2025</span>
+            </div>
+            <div class="db-big-value" id="counterSpent">€0</div>
+            <div class="db-sub-value">Across 47 transactions</div>
+            <div class="db-change down">↑ +6% vs last month</div>
+        </div>
+
+        <!-- Savings goal -->
+        <div class="db-card reveal d3">
+            <div class="db-card-header">
+            <span class="db-card-title">Savings Goal</span>
+            <span class="db-card-badge badge-blue">84%</span>
+            </div>
+            <div class="db-big-value">€1,680</div>
+            <div class="db-sub-value">of €2,000 target</div>
+            <div style="margin-top:12px;">
+            <div class="progress-bar">
+                <div class="progress-fill" data-width="84%" style="width:0%"></div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Spending chart -->
+        <div class="db-card span-2 reveal d1">
+            <div class="db-card-header">
+            <span class="db-card-title">Monthly Spending Trend</span>
+            <span class="db-card-badge badge-green">6 Months</span>
+            </div>
+            <canvas id="spendingChart" height="130"></canvas>
+        </div>
+
+        <!-- Pie chart -->
+        <div class="db-card reveal d2">
+            <div class="db-card-header">
+            <span class="db-card-title">Spending by Category</span>
+            <span class="db-card-badge badge-blue">This Month</span>
+            </div>
+            <canvas id="pieChart" height="160"></canvas>
+        </div>
+
+        <!-- Recent expenses -->
+        <div class="db-card span-2 reveal d1">
+            <div class="db-card-header">
+            <span class="db-card-title">Recent Expenses</span>
+            <a href="#" style="font-size:.78rem;font-weight:600;color:var(--primary);">View all →</a>
+            </div>
+            <div class="expense-list" role="list">
+            <div class="expense-item" role="listitem">
+                <div class="expense-cat-icon ic-orange" aria-hidden="true">🛒</div>
+                <div class="expense-name">Lidl Supermarket</div>
+                <div class="expense-date">Today, 09:14</div>
+                <div class="expense-amount">–€47.30</div>
+            </div>
+            <div class="expense-item" role="listitem">
+                <div class="expense-cat-icon ic-blue" aria-hidden="true">🚇</div>
+                <div class="expense-name">Monthly Transit Pass</div>
+                <div class="expense-date">Yesterday</div>
+                <div class="expense-amount">–€49.00</div>
+            </div>
+            <div class="expense-item" role="listitem">
+                <div class="expense-cat-icon ic-pink" aria-hidden="true">🍕</div>
+                <div class="expense-name">Deliveroo — Pizza</div>
+                <div class="expense-date">Mon, 14 Jul</div>
+                <div class="expense-amount">–€22.50</div>
+            </div>
+            <div class="expense-item" role="listitem">
+                <div class="expense-cat-icon ic-purple" aria-hidden="true">📱</div>
+                <div class="expense-name">Netflix Subscription</div>
+                <div class="expense-date">Sun, 13 Jul</div>
+                <div class="expense-amount">–€15.99</div>
+            </div>
+            </div>
+        </div>
+
+        <!-- AI recommendations -->
+        <div class="db-card reveal d2">
+            <div class="db-card-header">
+            <span class="db-card-title">🤖 AI Recommendations</span>
+            </div>
+            <div class="ai-recs" role="list">
+            <div class="ai-rec-item" role="listitem">
+                <div class="ai-rec-icon" aria-hidden="true">💡</div>
+                <div class="ai-rec-text"><strong>Cut takeaways</strong> to 2×/week — save <strong style="color:var(--primary);">€40/mo</strong></div>
+            </div>
+            <div class="ai-rec-item" role="listitem">
+                <div class="ai-rec-icon" aria-hidden="true">📱</div>
+                <div class="ai-rec-text"><strong>Switch phone plan</strong> — save <strong style="color:var(--primary);">€18/mo</strong></div>
+            </div>
+            <div class="ai-rec-item" role="listitem">
+                <div class="ai-rec-icon" aria-hidden="true">☕</div>
+                <div class="ai-rec-text"><strong>Brew at home</strong> 3 days/week — save <strong style="color:var(--primary);">€24/mo</strong></div>
+            </div>
+            <div class="ai-rec-item" role="listitem">
+                <div class="ai-rec-icon" aria-hidden="true">🎬</div>
+                <div class="ai-rec-text"><strong>Share streaming</strong> plan — save <strong style="color:var(--primary);">€8/mo</strong></div>
+            </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+    </section>
+
+    <!-- ============================================================
+        HOW IT WORKS
+    ============================================================ -->
+    <section class="section how-section" id="how-it-works" aria-labelledby="how-title">
+    <div class="container">
+        <header class="section-header">
+        <span class="chip chip-dark">⚡ How It Works</span>
+        <h2 class="section-title" id="how-title">Up and running<br><span class="grad">in 3 simple steps</span></h2>
+        <p class="section-sub" style="color:#94a3b8;">Getting started takes less than 2 minutes. No credit card required.</p>
+        </header>
+
+        <div class="steps-grid">
+        <div class="step-card reveal d1">
+            <div class="step-num" aria-hidden="true">1</div>
+            <div class="step-icon" aria-hidden="true">🔗</div>
+            <h3 class="step-title">Connect Your Accounts</h3>
+            <p class="step-desc">Securely link your bank accounts, credit cards, and wallets using 256-bit bank-level encryption. Takes 60 seconds.</p>
+        </div>
+        <div class="step-card reveal d2">
+            <div class="step-num" aria-hidden="true">2</div>
+            <div class="step-icon" aria-hidden="true">🔍</div>
+            <h3 class="step-title">Track Spending Automatically</h3>
+            <p class="step-desc">Every transaction is captured, categorised, and analysed in real time. Get a crystal-clear picture of your money.</p>
+        </div>
+        <div class="step-card reveal d3">
+            <div class="step-num" aria-hidden="true">3</div>
+            <div class="step-icon" aria-hidden="true">🚀</div>
+            <h3 class="step-title">Grow Your Savings with AI</h3>
+            <p class="step-desc">Receive weekly AI-powered reports with actionable tips. Watch your savings grow month over month, automatically.</p>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- ============================================================
+        PRICING
+    ============================================================ -->
+    <section class="section pricing-section" id="pricing" aria-labelledby="pricing-title">
+    <div class="container">
+        <header class="section-header">
+        <span class="chip">💳 Pricing</span>
+        <h2 class="section-title" id="pricing-title">Choose how<br><span class="grad">you pay</span></h2>
+        <p class="section-sub">Pay a flat fee — or only pay when you actually save. Either way, you always win.</p>
+        </header>
+
+        <div class="pricing-grid">
+
+        <div class="price-card reveal d1">
+            <div class="price-option">Option A — Flat Fee</div>
+            <div class="price-amount"><sup>€</sup>4.99</div>
+            <div class="price-period">per month, billed monthly</div>
+            <p class="price-desc">Simple, predictable pricing. Perfect for consistent savers who want full access without surprises.</p>
+            <div class="price-features">
+            <div class="price-feat"><span class="price-feat-check">✓</span> Unlimited expense tracking</div>
+            <div class="price-feat"><span class="price-feat-check">✓</span> AI insights & weekly reports</div>
+            <div class="price-feat"><span class="price-feat-check">✓</span> Savings goals & progress</div>
+            <div class="price-feat"><span class="price-feat-check">✓</span> Receipt scanner</div>
+            <div class="price-feat"><span class="price-feat-check">✓</span> Cancel anytime</div>
+            </div>
+            <a href="#cta" class="btn btn-outline" style="width:100%;justify-content:center;">Choose Flat Fee</a>
+        </div>
+
+        <div class="price-card featured reveal d2">
+            <div class="price-badge-top">🌟 Most Popular</div>
+            <div class="price-option">Option B — Performance</div>
+            <div class="price-amount">
+            <span style="font-size:2.2rem;">0.5</span><sup style="font-size:1.3rem;">%</sup>
+            </div>
+            <div class="price-period">of your monthly net savings</div>
+            <p class="price-desc">Only pay when you save. If PocketUp doesn't help you save money, you pay nothing. Perfectly aligned incentives.</p>
+            <div class="price-features">
+            <div class="price-feat"><span class="price-feat-check">✓</span> Everything in Option A</div>
+            <div class="price-feat"><span class="price-feat-check">✓</span> Pay only when you save</div>
+            <div class="price-feat"><span class="price-feat-check">✓</span> Zero fee if no savings</div>
+            <div class="price-feat"><span class="price-feat-check">✓</span> Capped at €9.99/month</div>
+            <div class="price-feat"><span class="price-feat-check">✓</span> Priority AI support</div>
+            </div>
+            <a href="#cta" class="btn btn-primary" style="width:100%;justify-content:center;">Choose Performance</a>
+        </div>
+
+        </div>
+
+        <div class="savings-example-box reveal">
+        <p class="seb-title">📊 Real Example — See the Difference</p>
+        <div class="seb-row">
+            <span class="seb-label">Net savings this month</span>
+            <span class="seb-val">€840</span>
+        </div>
+        <div class="seb-row">
+            <span class="seb-label">Option A — Flat fee</span>
+            <span class="seb-green">€4.99</span>
+        </div>
+        <div class="seb-row">
+            <span class="seb-label">Option B — 0.5% of €840</span>
+            <span class="seb-blue">€4.20 ✨ (you save €0.79)</span>
+        </div>
+        <p class="seb-note">The more you save, the more sense Option B makes. Capped at €9.99 no matter what.</p>
+        </div>
+
+    </div>
+    </section>
+
+    <!-- ============================================================
+        SECURITY
+    ============================================================ -->
+    <section class="section security-section" id="security" aria-labelledby="security-title">
+    <div class="container">
+        <header class="section-header">
+        <span class="chip">🔒 Security & Trust</span>
+        <h2 class="section-title" id="security-title">
+            Your data is<br><span class="grad">safe with us</span>
+        </h2>
+        <p class="section-sub">
+            We built PocketUp with a privacy-first mindset. Your financial data is yours — always encrypted, never sold.
+        </p>
+        </header>
+
+        <div class="security-grid">
+
+        <div class="security-copy">
+
+            <div class="security-item reveal-left d1">
+            <div class="security-icon ic-green" aria-hidden="true">🔐</div>
+            <div>
+                <h4>256-Bit Encryption</h4>
+                <p>All your financial data is encrypted at rest and in transit using AES-256 — the same standard used by major banks worldwide.</p>
+            </div>
+            </div>
+
+            <div class="security-item reveal-left d2">
+            <div class="security-icon ic-blue" aria-hidden="true">🛡️</div>
+            <div>
+                <h4>Secure Data Storage</h4>
+                <p>Your data is stored on ISO 27001-certified servers in EU data centres. We never store raw banking credentials.</p>
+            </div>
+            </div>
+
+            <div class="security-item reveal-left d3">
+            <div class="security-icon ic-purple" aria-hidden="true">👁️</div>
+            <div>
+                <h4>Privacy-First Design</h4>
+                <p>We collect only what's necessary. No selling data to third parties. No ads. Your financial life stays private.</p>
+            </div>
+            </div>
+
+            <div class="security-item reveal-left d4">
+            <div class="security-icon ic-teal" aria-hidden="true">🇪🇺</div>
+            <div>
+                <h4>GDPR Compliant</h4>
+                <p>Fully compliant with EU GDPR regulations. Export or delete your data at any time with one click. You're always in control.</p>
+            </div>
+            </div>
+
+        </div>
+
+        <div class="security-visual reveal-right">
+            <div class="sec-shield" aria-hidden="true">🛡️</div>
+            <div class="sec-title">Bank-Level Security</div>
+            <div class="sec-items" role="list">
+            <div class="sec-item" role="listitem">
+                <div class="sec-item-dot" aria-hidden="true"></div>
+                <span class="sec-item-text">AES-256 end-to-end encryption</span>
+                <span class="sec-item-check">✓</span>
+            </div>
+            <div class="sec-item" role="listitem">
+                <div class="sec-item-dot" aria-hidden="true"></div>
+                <span class="sec-item-text">Two-factor authentication (2FA)</span>
+                <span class="sec-item-check">✓</span>
+            </div>
+            <div class="sec-item" role="listitem">
+                <div class="sec-item-dot" aria-hidden="true"></div>
+                <span class="sec-item-text">ISO 27001-certified infrastructure</span>
+                <span class="sec-item-check">✓</span>
+            </div>
+            <div class="sec-item" role="listitem">
+                <div class="sec-item-dot" aria-hidden="true"></div>
+                <span class="sec-item-text">GDPR & ePrivacy compliant</span>
+                <span class="sec-item-check">✓</span>
+            </div>
+            <div class="sec-item" role="listitem">
+                <div class="sec-item-dot" aria-hidden="true"></div>
+                <span class="sec-item-text">Read-only bank connection (PSD2)</span>
+                <span class="sec-item-check">✓</span>
+            </div>
+            <div class="sec-item" role="listitem">
+                <div class="sec-item-dot" aria-hidden="true"></div>
+                <span class="sec-item-text">Zero data sold to third parties</span>
+                <span class="sec-item-check">✓</span>
+            </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+    </section>
+
+    <!-- ============================================================
+        SOCIAL PROOF
+    ============================================================ -->
+    <section class="section testimonials-section" id="testimonials" aria-labelledby="testimonials-title">
+    <div class="container">
+        <header class="section-header">
+        <span class="chip">💬 User Reviews</span>
+        <h2 class="section-title" id="testimonials-title">
+            Loved by real<br><span class="grad">everyday savers</span>
+        </h2>
+        <p class="section-sub">Over 12,000 users across Europe are already keeping more money in their pockets.</p>
+        </header>
+
+        <div class="testimonials-grid">
+
+        <article class="testi-card reveal d1">
+            <div class="testi-stars" aria-label="5 out of 5 stars">
+            <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
+            </div>
+            <p class="testi-text">"This app helped me save €200 in the first month. I had no idea I was spending so much on subscriptions I'd completely forgotten about!"</p>
+            <div class="testi-author">
+            <div class="testi-avatar" style="background:linear-gradient(135deg,#1DB954,#16a34a);" aria-label="Julia K.">JK</div>
+            <div>
+                <div class="testi-name">Julia K.</div>
+                <div class="testi-role">Freelance Designer · Berlin</div>
+            </div>
+            </div>
+        </article>
+
+        <article class="testi-card reveal d2">
+            <div class="testi-stars" aria-label="5 out of 5 stars">
+            <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
+            </div>
+            <p class="testi-text">"Finally a finance app that actually motivates me. The AI tips are spot-on and the interface feels like it was designed by someone who actually uses it."</p>
+            <div class="testi-author">
+            <div class="testi-avatar" style="background:linear-gradient(135deg,#38BDF8,#0284c7);" aria-label="Marco L.">ML</div>
+            <div>
+                <div class="testi-name">Marco L.</div>
+                <div class="testi-role">Software Engineer · Amsterdam</div>
+            </div>
+            </div>
+        </article>
+
+        <article class="testi-card reveal d3">
+            <div class="testi-stars" aria-label="5 out of 5 stars">
+            <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
+            </div>
+            <p class="testi-text">"The receipt scanner is a game changer. I used to dread logging expenses. Now I just snap a photo and it's done. Saved me hours every month."</p>
+            <div class="testi-author">
+            <div class="testi-avatar" style="background:linear-gradient(135deg,#a855f7,#7c3aed);" aria-label="Sofia R.">SR</div>
+            <div>
+                <div class="testi-name">Sofia R.</div>
+                <div class="testi-role">Marketing Manager · Madrid</div>
+            </div>
+            </div>
+        </article>
+
+        </div>
+
+        <div class="stats-strip reveal" role="region" aria-label="Key statistics">
+        <div class="stat-strip-item">
+            <div class="stat-strip-value" data-target="12000" data-prefix="" data-suffix="K+">0</div>
+            <div class="stat-strip-label">Active Users</div>
+        </div>
+        <div class="stat-strip-item">
+            <div class="stat-strip-value" data-target="2.4" data-prefix="€" data-suffix="M" data-float="true">€0</div>
+            <div class="stat-strip-label">Total Saved by Users</div>
+        </div>
+        <div class="stat-strip-item">
+            <div class="stat-strip-value" data-target="4.9" data-prefix="" data-suffix="★" data-float="true">0</div>
+            <div class="stat-strip-label">Average App Rating</div>
+        </div>
+        <div class="stat-strip-item">
+            <div class="stat-strip-value" data-target="98" data-prefix="" data-suffix="%">0</div>
+            <div class="stat-strip-label">Would Recommend</div>
+        </div>
+        </div>
+
+    </div>
+    </section>
+
+    <!-- ============================================================
+        CTA
+    ============================================================ -->
+    <section class="cta-section" id="cta" aria-labelledby="cta-title">
+    <div class="container cta-inner">
+        <span class="chip chip-dark" style="margin-bottom:24px;display:inline-flex;">🎯 Start Today — It's Free</span>
+        <h2 class="cta-title" id="cta-title">Start saving smarter today.</h2>
+        <p class="cta-sub">Join 12,000+ people who are already keeping more money in their pockets.</p>
+        <a href="#" class="btn btn-primary btn-lg">🚀 Create Free Account</a>
+        <p class="cta-note">No credit card required · Free 30-day trial · Cancel anytime</p>
+    </div>
+    </section>
+
+{% endblock %}
