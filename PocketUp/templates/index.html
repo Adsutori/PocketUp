@@ -125,7 +125,7 @@
     <section class="section core-features" id="features" aria-labelledby="features-title">
     <div class="container">
         <header class="section-header">
-        <span class="chip">{% lucide "sparkles" %} Core Features</span>
+        <span class="chip">{% lucide "sparkles" size="1.2rem" %} Core Features</span>
         <h2 class="section-title" id="features-title">
             Everything you need to<br><span class="grad">master your money</span>
         </h2>
@@ -188,7 +188,7 @@
     <section class="section savings-section" id="savings" aria-labelledby="savings-title">
     <div class="container">
         <header class="section-header">
-        <span class="chip">💰 Savings Tools</span>
+        <span class="chip">{% lucide "wallet" size="1.2rem" %} Savings Tools</span>
         <h2 class="section-title" id="savings-title">
             Built to help you<br><span class="grad">save more, every month</span>
         </h2>
@@ -203,7 +203,7 @@
         <div class="savings-list">
 
             <div class="savings-item reveal-left d1">
-            <div class="savings-item-icon ic-green" aria-hidden="true">🧮</div>
+            <div class="savings-item-icon ic-green" aria-hidden="true">{% lucide "calculator" %}</div>
             <div class="savings-item-body">
                 <h4>Net Savings Calculation</h4>
                 <p>Automatically calculates your net savings each month: income minus all expenses. Always know exactly where you stand.</p>
@@ -211,7 +211,7 @@
             </div>
 
             <div class="savings-item reveal-left d2">
-            <div class="savings-item-icon ic-blue" aria-hidden="true">🎯</div>
+            <div class="savings-item-icon ic-blue" aria-hidden="true">{% lucide "goal" %}</div>
             <div class="savings-item-body">
                 <h4>Savings Goals</h4>
                 <p>Set goals like "Emergency Fund €3,000" or "Holiday €1,500" and track your progress with visual progress bars.</p>
@@ -219,7 +219,7 @@
             </div>
 
             <div class="savings-item reveal-left d3">
-            <div class="savings-item-icon ic-orange" aria-hidden="true">🔔</div>
+            <div class="savings-item-icon ic-orange" aria-hidden="true">{% lucide "bell" %}</div>
             <div class="savings-item-body">
                 <h4>Budget Limit Alerts</h4>
                 <p>Set monthly spending limits per category. Get notified instantly when you're approaching or exceeding your budget.</p>
@@ -227,7 +227,7 @@
             </div>
 
             <div class="savings-item reveal-left d4">
-            <div class="savings-item-icon ic-purple" aria-hidden="true">📋</div>
+            <div class="savings-item-icon ic-purple" aria-hidden="true">{% lucide "calendar-check-2" %}</div>
             <div class="savings-item-body">
                 <h4>Weekly Financial Summaries</h4>
                 <p>Every Monday, receive a personalized summary of last week's spending with AI-powered tips for the week ahead.</p>
@@ -235,7 +235,7 @@
             </div>
 
             <div class="savings-item reveal-left d5">
-            <div class="savings-item-icon ic-teal" aria-hidden="true">🏆</div>
+            <div class="savings-item-icon ic-teal" aria-hidden="true">{% lucide "trophy" %}</div>
             <div class="savings-item-body">
                 <h4>Gamification & Badges</h4>
                 <p>Earn badges for hitting savings milestones. Stay motivated with streaks, progress bars, and weekly challenges.</p>
@@ -248,7 +248,7 @@
         <div class="savings-visual">
 
             <div class="sv-card reveal-right d1">
-            <div class="sv-card-title">🎯 Savings Goals Progress</div>
+            <div class="sv-card-title">{% lucide "goal" size="1.2rem" %} Savings Goals Progress</div>
             <div class="progress-list">
                 <div class="progress-item">
                 <div class="progress-header">
@@ -281,37 +281,37 @@
             </div>
 
             <div class="sv-card reveal-right d2">
-            <div class="sv-card-title">🏆 Your Badges</div>
+            <div class="sv-card-title">{% lucide "trophy" size="1.2rem" %} Your Badges</div>
             <div class="badge-row">
                 <div class="badge-item" title="First Save">
-                <span class="badge-emoji">🌱</span>
+                <span class="badge-emoji primary-lucide">{% lucide "square-check-big" %}</span>
                 <span class="badge-name">First Save</span>
                 </div>
-                <div class="badge-item" title="7-Day Streak">
-                <span class="badge-emoji">🔥</span>
+                <div class="badge-item primary-lucide" title="7-Day Streak">
+                <span class="badge-emoji">{% lucide "flame" %}</span>
                 <span class="badge-name">7-Day Streak</span>
                 </div>
-                <div class="badge-item" title="Budget Master">
-                <span class="badge-emoji">🎯</span>
+                <div class="badge-item primary-lucide" title="Budget Master">
+                <span class="badge-emoji">{% lucide "piggy-bank" %}</span>
                 <span class="badge-name">Budget Master</span>
                 </div>
-                <div class="badge-item" title="€500 Saved">
-                <span class="badge-emoji">💎</span>
+                <div class="badge-item primary-lucide" title="€500 Saved">
+                <span class="badge-emoji">{% lucide "gem" %}</span>
                 <span class="badge-name">€500 Saved</span>
                 </div>
-                <div class="badge-item locked" title="Locked: €1000 Saved">
-                <span class="badge-emoji">🚀</span>
+                <div class="badge-item primary-lucide locked" title="Locked: €1000 Saved">
+                <span class="badge-emoji">{% lucide "rocket" %}</span>
                 <span class="badge-name">€1K Club</span>
                 </div>
-                <div class="badge-item locked" title="Locked: 30-Day Streak">
-                <span class="badge-emoji">👑</span>
+                <div class="badge-item primary-lucide locked" title="Locked: 30-Day Streak">
+                <span class="badge-emoji">{% lucide "crown" %}</span>
                 <span class="badge-name">30-Day King</span>
                 </div>
             </div>
             </div>
 
             <div class="sv-card reveal-right d3">
-            <div class="sv-card-title">📊 This Week's Snapshot</div>
+            <div class="sv-card-title">{% lucide "chart-column" size='1.2rem' %} This Week's Snapshot</div>
             <canvas id="weeklyChart" height="110"></canvas>
             </div>
 
@@ -326,7 +326,7 @@
     <section class="section ai-section" id="ai" aria-labelledby="ai-title">
     <div class="container">
         <header class="section-header">
-        <span class="chip chip-dark">🤖 AI-Powered</span>
+        <span class="chip chip-dark">{% lucide "bot" size="1.2rem" %} AI-Powered</span>
         <h2 class="section-title" id="ai-title">
             Your personal<br><span class="grad">AI finance advisor</span>
         </h2>
@@ -338,41 +338,41 @@
         <div class="ai-grid">
 
         <div class="ai-card reveal d1">
-            <div class="ai-card-icon" aria-hidden="true">🔍</div>
+            <div class="ai-card-icon background-lucide" aria-hidden="true">{% lucide "search" %}</div>
             <h3 class="ai-card-title">AI Spending Analysis</h3>
             <p class="ai-card-desc">Our AI scans every transaction and identifies patterns, anomalies, and opportunities to save — automatically, every day.</p>
         </div>
 
         <div class="ai-card reveal d2">
-            <div class="ai-card-icon" aria-hidden="true">💡</div>
+            <div class="ai-card-icon background-lucide" aria-hidden="true">{% lucide "lightbulb" %}</div>
             <h3 class="ai-card-title">Smart Saving Suggestions</h3>
             <p class="ai-card-desc">Get personalised, data-driven suggestions like "Switch to a cheaper phone plan and save €18/month" based on your real spending.</p>
         </div>
 
         <div class="ai-card reveal d3">
-            <div class="ai-card-icon blue" aria-hidden="true">📆</div>
+            <div class="ai-card-icon blue background-lucide" aria-hidden="true">{% lucide "calendar" %}</div>
             <h3 class="ai-card-title">Weekly & Monthly Insights</h3>
             <p class="ai-card-desc">Receive beautifully formatted weekly and monthly financial reports with trends, comparisons, and forward-looking predictions.</p>
         </div>
 
         <div class="ai-card reveal d4">
-            <div class="ai-card-icon blue" aria-hidden="true">📈</div>
+            <div class="ai-card-icon blue background-lucide" aria-hidden="true">{% lucide "chart-line" %}</div>
             <h3 class="ai-card-title">Investment Surplus Advisor</h3>
             <p class="ai-card-desc">Once your savings goal is on track, AI suggests low-risk investment options for your surplus — tailored to your risk profile.</p>
         </div>
 
         <!-- AI Chat -->
         <div class="ai-chat reveal">
-            <div class="ai-chat-title">💬 AI Financial Chat Assistant</div>
+            <div class="ai-chat-title">{% lucide "message-circle" %} AI Financial Chat Assistant</div>
             <div class="chat-messages" role="log" aria-live="polite">
 
             <div class="chat-msg user">
-                <div class="chat-avatar user-av" aria-label="You">You</div>
+                <div class="chat-avatar user-av" aria-label="You">{% lucide "user" %}</div>
                 <div class="chat-bubble user-bubble">How much did I spend on food this month?</div>
             </div>
 
             <div class="chat-msg">
-                <div class="chat-avatar ai-av" aria-label="PocketUp AI">AI</div>
+                <div class="chat-avatar ai-av" aria-label="PocketUp AI">{% lucide "bot-message-square" %}</div>
                 <div class="chat-bubble ai-bubble">
                 You spent <strong>€342</strong> on food this month across 28 transactions.
                 That's <strong style="color:#f87171;">↑ 14% more</strong> than last month (€300).
@@ -381,12 +381,12 @@
             </div>
 
             <div class="chat-msg user">
-                <div class="chat-avatar user-av" aria-label="You">You</div>
+                <div class="chat-avatar user-av" aria-label="You">{% lucide "user" %}</div>
                 <div class="chat-bubble user-bubble">How can I reduce it?</div>
             </div>
 
             <div class="chat-msg">
-                <div class="chat-avatar ai-av" aria-label="PocketUp AI">AI</div>
+                <div class="chat-avatar ai-av" aria-label="PocketUp AI">{% lucide "bot-message-square" %}</div>
                 <div class="chat-bubble ai-bubble">
                 Try limiting takeaways to <strong>2× per week</strong> — that alone could save you
                 <strong style="color:#4ade80;">€40/month</strong>. Also, meal-prepping on Sundays
@@ -406,31 +406,30 @@
         <!-- Receipt scanning -->
         <div style="margin-top:64px; position:relative; z-index:1;">
         <div class="section-header" style="margin-bottom:40px;">
-            <span class="chip chip-dark">📷 Receipt Scanner</span>
+            <span class="chip chip-dark">{% lucide "receipt" size="1.2rem" %} Receipt Scanner</span>
             <h3 class="section-title" style="color:#fff;font-size:clamp(1.5rem,3vw,2.2rem);">
             Scan a receipt.<br><span class="grad">Done in 3 seconds.</span>
             </h3>
         </div>
 
         <div class="receipt-steps">
-
             <div class="rs-card reveal d1">
             <div class="rs-step-num" aria-hidden="true">1</div>
-            <div class="rs-icon" aria-hidden="true">📸</div>
+            <div class="rs-icon primary-lucide" aria-hidden="true">{% lucide "camera" width="2.5rem" height="2.5rem" %}</div>
             <h4 class="rs-title">Take a Photo</h4>
             <p class="rs-desc">Open PocketUp and tap the camera icon. Point your phone at any receipt — crumpled, faded, or digital.</p>
             </div>
 
             <div class="rs-card reveal d2">
             <div class="rs-step-num" aria-hidden="true">2</div>
-            <div class="rs-icon" aria-hidden="true">🤖</div>
+            <div class="rs-icon primary-lucide" aria-hidden="true">{% lucide "bot" width="2.5rem" height="2.5rem" %}</div>
             <h4 class="rs-title">AI Reads the Receipt</h4>
             <p class="rs-desc">Our AI instantly extracts the store name, date, individual items, and total amount. No typing required.</p>
             </div>
 
             <div class="rs-card reveal d3">
             <div class="rs-step-num" aria-hidden="true">3</div>
-            <div class="rs-icon" aria-hidden="true">✅</div>
+            <div class="rs-icon primary-lucide" aria-hidden="true">{% lucide "circle-check-big" width="2.5rem" height="2.5rem" %}</div>
             <h4 class="rs-title">Confirm & Add</h4>
             <p class="rs-desc">Review the detected items and price. Tap <strong style="color:#4ade80;">Add to Expenses</strong> and it's logged instantly with the right category.</p>
             </div>
@@ -447,7 +446,7 @@
     <section class="section dashboard-section" id="dashboard" aria-labelledby="dashboard-title">
     <div class="container">
         <header class="section-header">
-        <span class="chip">📱 Live Dashboard</span>
+        <span class="chip">{% lucide "chart-pie" size="1.2rem" %} Live Dashboard</span>
         <h2 class="section-title" id="dashboard-title">
             Your finances,<br><span class="grad">beautifully organised</span>
         </h2>
@@ -466,7 +465,7 @@
             </div>
             <div class="db-big-value" id="counterSavings">€0</div>
             <div class="db-sub-value">Income €3,200 – Expenses €2,360</div>
-            <div class="db-change up">↑ +18% vs last month</div>
+            <div class="db-change up">{% lucide "arrow-big-up" %} +18% vs last month</div>
         </div>
 
         <!-- Total spent -->
@@ -477,7 +476,7 @@
             </div>
             <div class="db-big-value" id="counterSpent">€0</div>
             <div class="db-sub-value">Across 47 transactions</div>
-            <div class="db-change down">↑ +6% vs last month</div>
+            <div class="db-change down">{% lucide "arrow-big-down" %} +6% vs last month</div>
         </div>
 
         <!-- Savings goal -->
@@ -521,26 +520,26 @@
             </div>
             <div class="expense-list" role="list">
             <div class="expense-item" role="listitem">
-                <div class="expense-cat-icon ic-orange" aria-hidden="true">🛒</div>
-                <div class="expense-name">Lidl Supermarket</div>
+                <div class="expense-cat-icon ic-orange" aria-hidden="true">{% lucide "shopping-cart" %}</div>
+                <div class="expense-name">Supermarket</div>
                 <div class="expense-date">Today, 09:14</div>
                 <div class="expense-amount">–€47.30</div>
             </div>
             <div class="expense-item" role="listitem">
-                <div class="expense-cat-icon ic-blue" aria-hidden="true">🚇</div>
+                <div class="expense-cat-icon ic-blue" aria-hidden="true">{% lucide "tram-front" %}</div>
                 <div class="expense-name">Monthly Transit Pass</div>
                 <div class="expense-date">Yesterday</div>
                 <div class="expense-amount">–€49.00</div>
             </div>
             <div class="expense-item" role="listitem">
-                <div class="expense-cat-icon ic-pink" aria-hidden="true">🍕</div>
-                <div class="expense-name">Deliveroo — Pizza</div>
+                <div class="expense-cat-icon ic-pink" aria-hidden="true">{% lucide "pizza" %}</div>
+                <div class="expense-name">Pizza</div>
                 <div class="expense-date">Mon, 14 Jul</div>
                 <div class="expense-amount">–€22.50</div>
             </div>
             <div class="expense-item" role="listitem">
-                <div class="expense-cat-icon ic-purple" aria-hidden="true">📱</div>
-                <div class="expense-name">Netflix Subscription</div>
+                <div class="expense-cat-icon ic-purple" aria-hidden="true">{% lucide "laptop" %}</div>
+                <div class="expense-name">Streaming Subscription</div>
                 <div class="expense-date">Sun, 13 Jul</div>
                 <div class="expense-amount">–€15.99</div>
             </div>
@@ -550,23 +549,23 @@
         <!-- AI recommendations -->
         <div class="db-card reveal d2">
             <div class="db-card-header">
-            <span class="db-card-title">🤖 AI Recommendations</span>
+            <span class="db-card-title">{% lucide "bot-message-square" %} AI Recommendations</span>
             </div>
             <div class="ai-recs" role="list">
             <div class="ai-rec-item" role="listitem">
-                <div class="ai-rec-icon" aria-hidden="true">💡</div>
+                <div class="ai-rec-icon primary-lucide" aria-hidden="true">{% lucide "lightbulb" %}</div>
                 <div class="ai-rec-text"><strong>Cut takeaways</strong> to 2×/week — save <strong style="color:var(--primary);">€40/mo</strong></div>
             </div>
             <div class="ai-rec-item" role="listitem">
-                <div class="ai-rec-icon" aria-hidden="true">📱</div>
+                <div class="ai-rec-icon primary-lucide" aria-hidden="true">{% lucide "smartphone" %}</div>
                 <div class="ai-rec-text"><strong>Switch phone plan</strong> — save <strong style="color:var(--primary);">€18/mo</strong></div>
             </div>
             <div class="ai-rec-item" role="listitem">
-                <div class="ai-rec-icon" aria-hidden="true">☕</div>
+                <div class="ai-rec-icon primary-lucide" aria-hidden="true">{% lucide "coffee" %}</div>
                 <div class="ai-rec-text"><strong>Brew at home</strong> 3 days/week — save <strong style="color:var(--primary);">€24/mo</strong></div>
             </div>
             <div class="ai-rec-item" role="listitem">
-                <div class="ai-rec-icon" aria-hidden="true">🎬</div>
+                <div class="ai-rec-icon primary-lucide" aria-hidden="true">{% lucide "clapperboard" %}</div>
                 <div class="ai-rec-text"><strong>Share streaming</strong> plan — save <strong style="color:var(--primary);">€8/mo</strong></div>
             </div>
             </div>
@@ -582,7 +581,7 @@
     <section class="section how-section" id="how-it-works" aria-labelledby="how-title">
     <div class="container">
         <header class="section-header">
-        <span class="chip chip-dark">⚡ How It Works</span>
+        <span class="chip chip-dark">{% lucide "book-open" size="1.2rem" %} How It Works</span>
         <h2 class="section-title" id="how-title">Up and running<br><span class="grad">in 3 simple steps</span></h2>
         <p class="section-sub" style="color:#94a3b8;">Getting started takes less than 2 minutes. No credit card required.</p>
         </header>
@@ -590,25 +589,27 @@
         <div class="steps-grid">
         <div class="step-card reveal d1">
             <div class="step-num" aria-hidden="true">1</div>
-            <div class="step-icon" aria-hidden="true">🔗</div>
+            <div class="step-icon primary-lucide" aria-hidden="true">{% lucide "link" width="2.5rem" height="2.5rem" %}</div>
             <h3 class="step-title">Connect Your Accounts</h3>
             <p class="step-desc">Securely link your bank accounts, credit cards, and wallets using 256-bit bank-level encryption. Takes 60 seconds.</p>
         </div>
         <div class="step-card reveal d2">
             <div class="step-num" aria-hidden="true">2</div>
-            <div class="step-icon" aria-hidden="true">🔍</div>
+            <div class="step-icon primary-lucide" aria-hidden="true">{% lucide "search" width="2.5rem" height="2.5rem" %}</div>
             <h3 class="step-title">Track Spending Automatically</h3>
             <p class="step-desc">Every transaction is captured, categorised, and analysed in real time. Get a crystal-clear picture of your money.</p>
         </div>
         <div class="step-card reveal d3">
             <div class="step-num" aria-hidden="true">3</div>
-            <div class="step-icon" aria-hidden="true">🚀</div>
+            <div class="step-icon primary-lucide" aria-hidden="true">{% lucide "chevrons-up" width="2.5rem" height="2.5rem" %}</div>
             <h3 class="step-title">Grow Your Savings with AI</h3>
             <p class="step-desc">Receive weekly AI-powered reports with actionable tips. Watch your savings grow month over month, automatically.</p>
         </div>
         </div>
     </div>
     </section>
+
+{% comment %} 
 
     <!-- ============================================================
         PRICING
@@ -770,7 +771,9 @@
 
         </div>
     </div>
-    </section>
+    </section> 
+
+{% endcomment %}
 
     <!-- ============================================================
         SOCIAL PROOF
@@ -778,18 +781,18 @@
     <section class="section testimonials-section" id="testimonials" aria-labelledby="testimonials-title">
     <div class="container">
         <header class="section-header">
-        <span class="chip">💬 User Reviews</span>
+        <span class="chip">{% lucide "user" size="1.2rem" %} User Reviews</span>
         <h2 class="section-title" id="testimonials-title">
             Loved by real<br><span class="grad">everyday savers</span>
         </h2>
-        <p class="section-sub">Over 12,000 users across Europe are already keeping more money in their pockets.</p>
+        <p class="section-sub">People across Europe are already keeping more money in their pockets.</p>
         </header>
 
         <div class="testimonials-grid">
 
         <article class="testi-card reveal d1">
             <div class="testi-stars" aria-label="5 out of 5 stars">
-            <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
+            <span class="testi-star">{% lucide "star" size="1rem" %}</span><span class="testi-star">{% lucide "star" size="1rem" %}</span><span class="testi-star">{% lucide "star" size="1rem" %}</span><span class="testi-star">{% lucide "star" size="1rem" %}</span><span class="testi-star">{% lucide "star" size="1rem" %}</span>
             </div>
             <p class="testi-text">"This app helped me save €200 in the first month. I had no idea I was spending so much on subscriptions I'd completely forgotten about!"</p>
             <div class="testi-author">
@@ -803,7 +806,7 @@
 
         <article class="testi-card reveal d2">
             <div class="testi-stars" aria-label="5 out of 5 stars">
-            <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
+            <span class="testi-star">{% lucide "star" size="1rem" %}</span><span class="testi-star">{% lucide "star" size="1rem" %}</span><span class="testi-star">{% lucide "star" size="1rem" %}</span><span class="testi-star">{% lucide "star" size="1rem" %}</span><span class="testi-star">{% lucide "star" size="1rem" %}</span>
             </div>
             <p class="testi-text">"Finally a finance app that actually motivates me. The AI tips are spot-on and the interface feels like it was designed by someone who actually uses it."</p>
             <div class="testi-author">
@@ -817,7 +820,7 @@
 
         <article class="testi-card reveal d3">
             <div class="testi-stars" aria-label="5 out of 5 stars">
-            <span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span>
+            <span class="testi-star">{% lucide "star" size="1rem" %}</span><span class="testi-star">{% lucide "star" size="1rem" %}</span><span class="testi-star">{% lucide "star" size="1rem" %}</span><span class="testi-star">{% lucide "star" size="1rem" %}</span><span class="testi-star">{% lucide "star" size="1rem" %}</span>
             </div>
             <p class="testi-text">"The receipt scanner is a game changer. I used to dread logging expenses. Now I just snap a photo and it's done. Saved me hours every month."</p>
             <div class="testi-author">
@@ -831,7 +834,7 @@
 
         </div>
 
-        <div class="stats-strip reveal" role="region" aria-label="Key statistics">
+        {% comment %} <div class="stats-strip reveal" role="region" aria-label="Key statistics">
         <div class="stat-strip-item">
             <div class="stat-strip-value" data-target="12000" data-prefix="" data-suffix="K+">0</div>
             <div class="stat-strip-label">Active Users</div>
@@ -848,7 +851,7 @@
             <div class="stat-strip-value" data-target="98" data-prefix="" data-suffix="%">0</div>
             <div class="stat-strip-label">Would Recommend</div>
         </div>
-        </div>
+        </div> {% endcomment %}
 
     </div>
     </section>
@@ -858,10 +861,10 @@
     ============================================================ -->
     <section class="cta-section" id="cta" aria-labelledby="cta-title">
     <div class="container cta-inner">
-        <span class="chip chip-dark" style="margin-bottom:24px;display:inline-flex;">🎯 Start Today — It's Free</span>
+        <span class="chip chip-dark" style="margin-bottom:24px;display:inline-flex;" style="display: flex; items-align: center; gap: 0.4em;">{% lucide "power" %} Start Today — It's Free</span>
         <h2 class="cta-title" id="cta-title">Start saving smarter today.</h2>
         <p class="cta-sub">Join 12,000+ people who are already keeping more money in their pockets.</p>
-        <a href="#" class="btn btn-primary btn-lg">🚀 Create Free Account</a>
+        <a href="#" class="btn btn-primary btn-lg">{% lucide "rocket" size='1.2rem' %} Create Free Account</a>
         <p class="cta-note">No credit card required · Free 30-day trial · Cancel anytime</p>
     </div>
     </section>

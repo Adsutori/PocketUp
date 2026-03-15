@@ -448,7 +448,7 @@ button{ font-family: var(--font); cursor: pointer; border: none; background: non
     background: #fff; border: 1px solid var(--border);
     border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-sm);
 }
-.sv-card-title { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); margin-bottom: 14px; }
+.sv-card-title { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); margin-bottom: 14px; display: flex; align-items: center; gap: 0.4em}
 
 .progress-list { display: flex; flex-direction: column; gap: 14px; }
 .progress-item {}
@@ -522,7 +522,7 @@ button{ font-family: var(--font); cursor: pointer; border: none; background: non
     border-radius: var(--radius-lg); padding: 24px;
     grid-column: 1 / -1;
 }
-.ai-chat-title { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #64748b; margin-bottom: 16px; }
+.ai-chat-title { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #64748b; margin-bottom: 16px; display: flex; align-items: center; gap: 0.4em; }
 
 .chat-messages { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
 .chat-msg {
@@ -531,9 +531,11 @@ button{ font-family: var(--font); cursor: pointer; border: none; background: non
 .chat-msg.user { flex-direction: row-reverse; }
 
 .chat-avatar {
-    width: 28px; height: 28px; border-radius: 50%;
+    width: 32px; height: 32px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     font-size: .7rem; font-weight: 700; flex-shrink: 0;
+    width: 1.8rem;
+    height: 1.8rem;
 }
 .chat-avatar.ai-av   { background: linear-gradient(135deg, var(--primary), #16a34a); color: #fff; }
 .chat-avatar.user-av { background: linear-gradient(135deg, var(--accent), var(--accent-dark)); color: #fff; }
@@ -575,7 +577,7 @@ button{ font-family: var(--font); cursor: pointer; border: none; background: non
 }
 .receipt-steps::before {
     content: ''; position: absolute;
-    top: 36px; left: calc(16.66% + 12px); right: calc(16.66% + 12px);
+    top: 50px; left: calc(16.66% + 12px); right: calc(16.66% + 12px);
     height: 1px; background: linear-gradient(90deg, var(--primary), var(--accent));
     opacity: .3;
 }
@@ -593,7 +595,7 @@ button{ font-family: var(--font); cursor: pointer; border: none; background: non
     display: flex; align-items: center; justify-content: center;
     margin: 0 auto 16px; box-shadow: 0 6px 20px rgba(29,185,84,.3);
 }
-.rs-icon  { font-size: 2rem; margin-bottom: 12px; }
+.rs-icon  { font-size: 3rem; margin-bottom: 12px; }
 .rs-title { font-size: .95rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
 .rs-desc  { font-size: .82rem; color: #94a3b8; line-height: 1.6; }
 
@@ -621,7 +623,7 @@ button{ font-family: var(--font); cursor: pointer; border: none; background: non
     display: flex; justify-content: space-between;
     align-items: center; margin-bottom: 16px;
 }
-.db-card-title { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); }
+.db-card-title { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); display: flex; align-items: center; gap: 0.4rem;}
 .db-card-badge { font-size: .7rem; font-weight: 700; padding: 3px 8px; border-radius: var(--radius-full); }
 .badge-green { background: var(--primary-light); color: var(--primary); }
 .badge-blue  { background: var(--accent-light);  color: var(--accent-dark); }
@@ -683,7 +685,7 @@ button{ font-family: var(--font); cursor: pointer; border: none; background: non
 }
 .steps-grid::before {
     content: ''; position: absolute;
-    top: 38px; left: calc(16.66% + 14px); right: calc(16.66% + 14px);
+    top: 56px; left: calc(16.66% + 14px); right: calc(16.66% + 14px);
     height: 2px; background: linear-gradient(90deg, var(--primary), var(--accent)); opacity: .3;
 }
 .step-card {
@@ -699,7 +701,7 @@ button{ font-family: var(--font); cursor: pointer; border: none; background: non
     display: flex; align-items: center; justify-content: center;
     margin: 0 auto 16px; box-shadow: 0 8px 24px rgba(29,185,84,.3);
 }
-.step-icon  { font-size: 1.8rem; margin-bottom: 12px; }
+.step-icon  { font-size: 1.8rem; margin-bottom: 12px; margin: 1.5vw}
 .step-title { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
 .step-desc  { font-size: .85rem; color: #94a3b8; line-height: 1.65; }
 

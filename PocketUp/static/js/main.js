@@ -518,21 +518,26 @@ document.querySelectorAll('.badge-item:not(.locked)').forEach(badge => {
   var demoIndex = 0;
 
   function appendMessage(text, isUser) {
-    var msg    = document.createElement('div');
-    msg.className = 'chat-msg' + (isUser ? ' user' : '');
+      var msg = document.createElement('div');
+      msg.className = 'chat-msg' + (isUser ? ' user' : '');
 
-    var avatar = document.createElement('div');
-    avatar.className = 'chat-avatar ' + (isUser ? 'user-av' : 'ai-av');
-    avatar.textContent = isUser ? 'You' : 'AI';
+      var avatar = document.createElement('div');
+      avatar.className = 'chat-avatar ' + (isUser ? 'user-av' : 'ai-av');
+      avatar.innerHTML = isUser
+          ? '<i data-lucide="user"></i>'
+          : '<i data-lucide="bot-message-square"></i>';
 
-    var bubble = document.createElement('div');
-    bubble.className = 'chat-bubble ' + (isUser ? 'user-bubble' : 'ai-bubble');
-    bubble.innerHTML = text;
+      var bubble = document.createElement('div');
+      bubble.className = 'chat-bubble ' + (isUser ? 'user-bubble' : 'ai-bubble');
+      bubble.innerHTML = text;
 
-    msg.appendChild(avatar);
-    msg.appendChild(bubble);
-    log.appendChild(msg);
-    log.scrollTop = log.scrollHeight;
+      msg.appendChild(avatar);
+      msg.appendChild(bubble);
+      log.appendChild(msg);
+      log.scrollTop = log.scrollHeight;
+
+      // Renderuje nowo dodane ikony Lucide
+      lucide.createIcons();
   }
 
   function showTypingIndicator() {
