@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block title %}
-    Home
+    PocketUp - Keep More Money
 {% endblock %}
 
 {% block content %}
@@ -32,8 +32,8 @@
             </p>
 
             <div class="hero-actions">
-            <a href="#cta"          class="btn btn-primary btn-lg">🚀 Get Started Free</a>
-            <a href="#how-it-works" class="btn btn-outline  btn-lg">▶ See How It Works</a>
+            <a href="#cta"          class="btn btn-primary btn-lg">{% lucide "rocket" %} Get Started Free</a>
+            <a href="#how-it-works" class="btn btn-outline  btn-lg">{% lucide "lightbulb" %} See How It Works</a>
             </div>
 
             <div class="hero-trust">
@@ -53,7 +53,7 @@
         <div class="hero-visual" aria-hidden="true">
 
             <div class="float-pill float-pill-1">
-            <div class="fp-icon" style="background:var(--primary-light);">💸</div>
+            <div class="fp-icon primary-lucide" style="background:var(--primary-light);">{% lucide "coins" %}</div>
             <div>
                 <div style="font-size:.68rem;color:var(--text-muted);">Saved this month</div>
                 <div style="color:var(--primary);font-weight:800;">+€840</div>
@@ -64,10 +64,10 @@
             <div class="dash-top">
                 <div>
                 <div class="dash-greeting">Good morning,</div>
-                <div class="dash-name">Alex 👋</div>
+                <div class="dash-name">Alex</div>
                 </div>
-                <div class="dash-notif">
-                🔔
+                <div class="dash-notif secondary-lucide">
+                {% lucide "bell" %}
                 <div class="dash-notif-dot"></div>
                 </div>
             </div>
@@ -75,17 +75,17 @@
             <div class="dash-balance-card">
                 <div class="dash-balance-label">Total Balance</div>
                 <div class="dash-balance-amount" id="heroBalance">€8,420</div>
-                <span class="dash-balance-change">↑ +12.4% this month</span>
+                <span class="dash-balance-change">{% lucide "arrow-big-up" %} +12.4% this month</span>
             </div>
 
             <div class="dash-row">
                 <div class="dash-mini-card">
-                <div class="dash-mini-icon">📥</div>
+                <div class="dash-mini-icon primary-lucide">{% lucide "arrow-big-down-dash" %}</div>
                 <div class="dash-mini-label">Income</div>
                 <div class="dash-mini-value green">€3,200</div>
                 </div>
                 <div class="dash-mini-card">
-                <div class="dash-mini-icon">📤</div>
+                <div class="dash-mini-icon red-lucide">{% lucide "arrow-big-up-dash" %}</div>
                 <div class="dash-mini-label">Expenses</div>
                 <div class="dash-mini-value red">€2,360</div>
                 </div>
@@ -99,7 +99,7 @@
             </div>
 
             <div class="dash-ai-tip">
-                <div class="dash-ai-tip-icon">🤖</div>
+                <div class="dash-ai-tip-icon primary-lucide">{% lucide "bot" %}</div>
                 <div class="dash-ai-tip-text">
                 <strong>AI Tip:</strong> Cut dining out by 20% and save an extra <strong style="color:var(--primary);">€64/month</strong>.
                 </div>
@@ -107,7 +107,7 @@
             </div>
 
             <div class="float-pill float-pill-2">
-            <div class="fp-icon" style="background:var(--accent-light);">🎯</div>
+            <div class="fp-icon accent-dark-lucide" style="background:var(--accent-light);">{% lucide "goal" %}</div>
             <div>
                 <div style="font-size:.68rem;color:var(--text-muted);">Savings goal</div>
                 <div style="color:var(--accent-dark);font-weight:800;">84% reached</div>
@@ -125,7 +125,7 @@
     <section class="section core-features" id="features" aria-labelledby="features-title">
     <div class="container">
         <header class="section-header">
-        <span class="chip">✨ Core Features</span>
+        <span class="chip">{% lucide "sparkles" %} Core Features</span>
         <h2 class="section-title" id="features-title">
             Everything you need to<br><span class="grad">master your money</span>
         </h2>
@@ -136,44 +136,44 @@
 
         <div class="features-grid">
 
-        <article class="feat-card reveal d1">
+        {% comment %} <article class="feat-card reveal d1">
             <div class="feat-icon-wrap ic-green" aria-hidden="true">👤</div>
             <h3 class="feat-title">User Registration & Login</h3>
             <p class="feat-desc">Secure sign-up and login with email or social accounts. Your data is encrypted and protected from day one.</p>
-        </article>
+        </article> {% endcomment %}
 
         <article class="feat-card reveal d2">
-            <div class="feat-icon-wrap ic-blue" aria-hidden="true">📊</div>
+            <div class="feat-icon-wrap ic-blue" aria-hidden="true">{% lucide "chart-column" %}</div>
             <h3 class="feat-title">Personal Finance Dashboard</h3>
             <p class="feat-desc">A beautiful overview of your entire financial life — balances, income, expenses, and savings goals in one glance.</p>
         </article>
 
-        <article class="feat-card reveal d3">
+        {% comment %} <article class="feat-card reveal d3">
             <div class="feat-icon-wrap ic-orange" aria-hidden="true">✏️</div>
             <h3 class="feat-title">Add & Edit Expenses</h3>
             <p class="feat-desc">Log expenses manually in seconds or let AI scan your receipts automatically. Edit, delete, and categorize with ease.</p>
-        </article>
+        </article> {% endcomment %}
 
-        <article class="feat-card reveal d1">
+        {% comment %} <article class="feat-card reveal d1">
             <div class="feat-icon-wrap ic-purple" aria-hidden="true">🏷️</div>
             <h3 class="feat-title">Expense Categories</h3>
             <p class="feat-desc">Organize spending into smart categories — food, transport, bills, entertainment, health, and more. Fully customizable.</p>
-        </article>
+        </article> {% endcomment %}
 
         <article class="feat-card reveal d2">
-            <div class="feat-icon-wrap ic-teal" aria-hidden="true">📅</div>
+            <div class="feat-icon-wrap ic-teal" aria-hidden="true">{% lucide "calendar" %}</div>
             <h3 class="feat-title">Monthly Income & Expense Summary</h3>
             <p class="feat-desc">Get a clear monthly breakdown of what came in and what went out. Spot trends and compare month over month.</p>
         </article>
 
-        <article class="feat-card reveal d3">
+        {% comment %} <article class="feat-card reveal d3">
             <div class="feat-icon-wrap ic-pink" aria-hidden="true">📈</div>
             <h3 class="feat-title">Expense Charts</h3>
             <p class="feat-desc">Interactive pie charts and monthly bar charts give you a visual understanding of your spending patterns instantly.</p>
-        </article>
+        </article> {% endcomment %}
 
-        <article class="feat-card reveal d2" style="grid-column: 2;">
-            <div class="feat-icon-wrap ic-green" aria-hidden="true">🤖</div>
+        <article class="feat-card reveal d2" style="grid-column: 3;">
+            <div class="feat-icon-wrap ic-green" aria-hidden="true">{% lucide "bot" %}</div>
             <h3 class="feat-title">Automatic Categorization</h3>
             <p class="feat-desc">AI reads your transactions and categorizes them automatically. No more manual sorting — it just works.</p>
         </article>

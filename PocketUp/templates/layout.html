@@ -1,4 +1,5 @@
 {% load static %}
+{% load lucide %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,12 +7,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{% block title %}PocketUp{% endblock %}</title>
-
-  <!-- CSS -->
+  <link rel ="icon" href="{{ MEDIA_URL }}/layout/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-
-  <!-- Chart.js MUSI być przed main.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
@@ -22,9 +21,10 @@
     <div class="nav-inner">
 
       <a href="#home" class="nav-logo" aria-label="PocketUp home">
-        <div class="nav-logo-icon" aria-hidden="true">💰</div>
-        PocketUp
+        <img class="nav-logo-img" src="{{ MEDIA_URL }}/layout/PocketUp_trans_logo.png" alt="Logo" />
       </a>
+
+      
 
       {% if user.is_authenticated %}
         <!-- authenticated nav tutaj -->
@@ -59,7 +59,7 @@
     <a href="#pricing"  onclick="closeMobileNav()">Pricing</a>
     <a href="#security" onclick="closeMobileNav()">Security</a>
     <a href="#"         onclick="closeMobileNav()">Log In</a>
-    <!-- ✅ POPRAWIONY style — jedna linia, bez duplikatu -->
+
     <a href="#cta"
        class="btn btn-primary"
        style="text-align:center; margin-top:4px;"
@@ -84,12 +84,11 @@
 
         <div class="footer-brand">
           <a href="#home" class="nav-logo" aria-label="PocketUp home">
-            <div class="nav-logo-icon" aria-hidden="true">💰</div>
-            PocketUp
+            <img class="nav-logo-img" src="{{ MEDIA_URL }}/layout/PocketUp_trans_logo_white.png" alt="Logo" />
           </a>
           <p>Smart personal finance for people who want to keep more of what they earn.</p>
           <div class="footer-social" aria-label="Social media links">
-            <a href="#" class="social-icon" aria-label="Twitter / X">𝕏</a>
+            <a  href="#" class="social-icon" aria-label="Twitter / X">𝕏</a>
             <a href="#" class="social-icon" aria-label="Instagram">📸</a>
             <a href="#" class="social-icon" aria-label="LinkedIn">in</a>
             <a href="#" class="social-icon" aria-label="YouTube">▶</a>
@@ -132,7 +131,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p>© 2026 PocketUp Technologies Ltd. All rights reserved.</p>
+        <p>© 2026 PocketUp. All rights reserved.</p>
         <div class="footer-bottom-links">
           <a href="#">Privacy</a>
           <a href="#">Terms</a>
@@ -142,36 +141,7 @@
     </div>
   </footer>
 
-  <!-- ============================================================
-       JS — main.js NA KOŃCU BODY, po Chart.js
-  ============================================================ -->
   <script src="{% static 'js/main.js' %}"></script>
-
-
-<!-- TEST DIAGNOSTYCZNY — usuń po naprawie -->
-<script>
-  console.log('=== DIAGNOSTYKA POCKETUP ===');
-  console.log('Chart.js załadowany:', typeof Chart !== 'undefined');
-  console.log('DOM gotowy:', document.readyState);
-
-  const featGrid = document.querySelector('.features-grid');
-  console.log('features-grid istnieje:', !!featGrid);
-
-  if (featGrid) {
-    const cards = featGrid.querySelectorAll('.feat-card');
-    console.log('Liczba kart feat-card:', cards.length);
-    cards.forEach((c, i) => {
-      console.log(`Karta ${i} opacity:`, getComputedStyle(c).opacity,
-                  'transform:', getComputedStyle(c).transform,
-                  'klasy:', c.className);
-    });
-  }
-
-  const reveals = document.querySelectorAll('.reveal');
-  console.log('Elementy .reveal na stronie:', reveals.length);
-</script>
-
-
 
 </body>
 </html>
