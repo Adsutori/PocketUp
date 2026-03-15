@@ -15,6 +15,7 @@ from decouple import config
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'lucide',
+    'Users',
 ]
 
 MIDDLEWARE = [
@@ -134,3 +136,39 @@ MEDIA_ROOT = BASE_DIR / 'media'
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
+
+
+
+# Storage - Supabase
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_ACCESS_KEY_ID = config('SUPABASE_STORAGE_KEY')
+AWS_SECRET_ACCESS_KEY = config('SUPABASE_STORAGE_SECRET')
+AWS_STORAGE_BUCKET_NAME = 'avatars'
+AWS_S3_ENDPOINT_URL = config('SUPABASE_STORAGE_URL')
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = 'public-read'
+AWS_S3_REGION_NAME = 'eu-west-2'
+
+
+
+AUTH_USER_MODEL = 'Users.User'
+
+
+
+
+# Email Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = f'PocketUp <{config("EMAIL_HOST_USER")}>'
+
+
+
+
+LOGIN_URL = '/users/login/'
+LOGIN_REDIRECT_URL = '/dashboard/'
+LOGOUT_REDIRECT_URL = '/'

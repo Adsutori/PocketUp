@@ -1,0 +1,85 @@
+{% extends 'layout.html' %}
+{% load lucide %}
+
+{% block title %}Log In · PocketUp{% endblock %}
+
+{% block content %}
+<section class="auth-section">
+  <div class="auth-blob auth-blob-1" aria-hidden="true"></div>
+  <div class="auth-blob auth-blob-2" aria-hidden="true"></div>
+
+  <div class="auth-container">
+
+    <div class="auth-header">
+      <span class="chip">{% lucide "log-in" size="1.2rem" %} Welcome Back</span>
+      <h1 class="auth-title">Log in to <span class="grad">PocketUp</span></h1>
+      <p class="auth-sub">Track your money, grow your savings.</p>
+    </div>
+
+    <div class="auth-card">
+
+      {% if messages %}
+        {% for message in messages %}
+          <div class="auth-alert {% if message.tags == 'error' %}auth-alert-error{% else %}auth-alert-success{% endif %}" role="alert">
+            {% if message.tags == 'error' %}
+              {% lucide "circle-x" size="1rem" %}
+            {% else %}
+              {% lucide "circle-check" size="1rem" %}
+            {% endif %}
+            <span>{{ message }}</span>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      <form method="post" novalidate>
+        {% csrf_token %}
+
+        <div class="form-group">
+          <label class="form-label" for="email">
+            {% lucide "mail" size="1rem" %} Email
+          </label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="form-input"
+            placeholder="you@example.com"
+            autocomplete="email"
+            autofocus
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">
+            {% lucide "lock" size="1rem" %} Password
+          </label>
+          <div class="input-password-wrap">
+            <input
+              type="password"
+              name="password"
+              id="password"
+              class="form-input"
+              placeholder="Your password"
+              autocomplete="current-password"
+            />
+            <button type="button" class="toggle-password" aria-label="Show password" tabindex="-1">
+              {% lucide "eye" size="1rem" %}
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary auth-submit">
+          {% lucide "log-in" size="1rem" %} Log In
+        </button>
+
+      </form>
+
+      <p class="auth-switch">
+        Don't have an account?
+        <a href="{% url 'register' %}">Create one free →</a>
+      </p>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

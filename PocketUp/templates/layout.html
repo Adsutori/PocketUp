@@ -20,14 +20,18 @@
   <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
 
-      <a href="#home" class="nav-logo" aria-label="PocketUp home">
+      <a href="{% url 'landing-home' %}" class="nav-logo" aria-label="PocketUp home">
         <img class="nav-logo-img" src="{{ MEDIA_URL }}/layout/PocketUp_trans_logo.png" alt="Logo" />
       </a>
 
-      
-
       {% if user.is_authenticated %}
-        <!-- authenticated nav tutaj -->
+        <ul class="nav-links" role="list">
+          <li><a href="/dashboard/">Dashboard</a></li>
+        </ul>
+        <div class="nav-actions">
+          <span class="nav-login">Hi, {{ user.nick }}</span>
+          <a href="{% url 'logout' %}" class="btn btn-primary">Log Out</a>
+        </div>
       {% else %}
         <ul class="nav-links" role="list">
           <li><a href="#features">Features</a></li>
@@ -37,10 +41,11 @@
           <li><a href="#testimonials">Reviews</a></li>
         </ul>
         <div class="nav-actions">
-          <a href="#" class="nav-login">Log In</a>
-          <a href="#cta" class="btn btn-primary">Get Started</a>
+          <a href="{% url 'login' %}" class="nav-login">Log In</a>
+          <a href="{% url 'register' %}" class="btn btn-primary">Get Started</a>
         </div>
       {% endif %}
+  
 
       <div class="hamburger" id="hamburger"
            role="button" aria-label="Toggle menu"
@@ -58,9 +63,9 @@
     <a href="#ai"       onclick="closeMobileNav()">AI Tools</a>
     <a href="#dashboard"  onclick="closeMobileNav()">Live Dashboard</a>
     <a href="#testimonials" onclick="closeMobileNav()">Reviews</a>
-    <a href="#"         onclick="closeMobileNav()">Log In</a>
+    <a href=""         onclick="closeMobileNav()">Log In</a>
 
-    <a href="#cta"
+    <a href=""
        class="btn btn-primary"
        style="text-align:center; margin-top:4px;"
        onclick="closeMobileNav()">

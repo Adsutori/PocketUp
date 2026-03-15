@@ -1,0 +1,71 @@
+{% extends 'layout.html' %}
+{% load lucide %}
+
+{% block title %}Verify Email · PocketUp{% endblock %}
+
+{% block content %}
+<section class="auth-section">
+  <div class="auth-blob auth-blob-1" aria-hidden="true"></div>
+  <div class="auth-blob auth-blob-2" aria-hidden="true"></div>
+
+  <div class="auth-container">
+
+    <div class="auth-header">
+      <span class="chip">{% lucide "mail-check" size="1.2rem" %} Email Verification</span>
+      <h1 class="auth-title">Check your <span class="grad">inbox</span></h1>
+      <p class="auth-sub">We sent a 6-digit code to your email address. It expires in 15 minutes.</p>
+    </div>
+
+    <div class="auth-card">
+
+      {% if messages %}
+        {% for message in messages %}
+          <div class="auth-alert {% if message.tags == 'error' %}auth-alert-error{% else %}auth-alert-success{% endif %}" role="alert">
+            {% if message.tags == 'error' %}
+              {% lucide "circle-x" size="1rem" %}
+            {% else %}
+              {% lucide "circle-check" size="1rem" %}
+            {% endif %}
+            <span>{{ message }}</span>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      <form method="post">
+        {% csrf_token %}
+
+        <div class="form-group">
+          <label class="form-label" for="code">
+            {% lucide "hash" size="1rem" %} Verification Code
+          </label>
+          <input
+            type="text"
+            name="code"
+            id="code"
+            class="form-input code-input"
+            placeholder="_ _ _ _ _ _"
+            maxlength="6"
+            inputmode="numeric"
+            pattern="[0-9]{6}"
+            autocomplete="one-time-code"
+            autofocus
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary auth-submit">
+          {% lucide "circle-check-big" size="1rem" %} Verify Account
+        </button>
+
+      </form>
+
+      <div class="auth-resend">
+        <p>Didn't receive the code?</p>
+        <a href="{% url 'resend_verification' %}" class="resend-link">
+          {% lucide "refresh-cw" size="1rem" %} Resend Code
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

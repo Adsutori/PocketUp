@@ -605,3 +605,14 @@ document.querySelectorAll('.badge-item:not(.locked)').forEach(badge => {
 
   obs.observe(dashSection);
 })();
+
+
+
+// Password toggle
+document.querySelectorAll('.toggle-password').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const input = btn.previousElementSibling;
+    const isPassword = input.type === 'password';
+    input.type = isPassword ? 'text' : 'password';
+  });
+});

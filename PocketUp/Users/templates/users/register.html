@@ -1,0 +1,161 @@
+{% extends 'layout.html' %}
+{% load lucide %}
+
+{% block title %}Create Account · PocketUp{% endblock %}
+
+{% block content %}
+<section class="auth-section">
+  <div class="auth-blob auth-blob-1" aria-hidden="true"></div>
+  <div class="auth-blob auth-blob-2" aria-hidden="true"></div>
+
+  <div class="auth-container">
+
+    <div class="auth-header">
+      <span class="chip">{% lucide "user-plus" size="1.2rem" %} New Account</span>
+      <h1 class="auth-title">Create your <span class="grad">free account</span></h1>
+      <p class="auth-sub">Join smart savers across Europe.</p>
+    </div>
+
+    <div class="auth-card">
+
+      {% if form.errors %}
+        <div class="auth-alert auth-alert-error" role="alert">
+          {% lucide "circle-x" size="1rem" %}
+          <span>Please fix the errors below.</span>
+        </div>
+      {% endif %}
+
+      <form method="post" novalidate>
+        {% csrf_token %}
+
+        <div class="form-group">
+          <label class="form-label" for="id_nick">
+            {% lucide "at-sign" size="1rem" %} Nick
+          </label>
+          <input
+            type="text"
+            name="nick"
+            id="id_nick"
+            class="form-input {% if form.nick.errors %}input-error{% endif %}"
+            placeholder="your_nick"
+            value="{{ form.nick.value|default:'' }}"
+            autocomplete="username"
+          />
+          {% if form.nick.errors %}
+            <span class="form-error">{{ form.nick.errors.0 }}</span>
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="id_email">
+            {% lucide "mail" size="1rem" %} Email
+          </label>
+          <input
+            type="email"
+            name="email"
+            id="id_email"
+            class="form-input {% if form.email.errors %}input-error{% endif %}"
+            placeholder="you@example.com"
+            value="{{ form.email.value|default:'' }}"
+            autocomplete="email"
+          />
+          {% if form.email.errors %}
+            <span class="form-error">{{ form.email.errors.0 }}</span>
+          {% endif %}
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="id_first_name">
+              {% lucide "user" size="1rem" %} First Name
+            </label>
+            <input
+              type="text"
+              name="first_name"
+              id="id_first_name"
+              class="form-input {% if form.first_name.errors %}input-error{% endif %}"
+              placeholder="John"
+              value="{{ form.first_name.value|default:'' }}"
+            />
+            {% if form.first_name.errors %}
+              <span class="form-error">{{ form.first_name.errors.0 }}</span>
+            {% endif %}
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="id_last_name">
+              {% lucide "user" size="1rem" %} Last Name
+            </label>
+            <input
+              type="text"
+              name="last_name"
+              id="id_last_name"
+              class="form-input {% if form.last_name.errors %}input-error{% endif %}"
+              placeholder="Doe"
+              value="{{ form.last_name.value|default:'' }}"
+            />
+            {% if form.last_name.errors %}
+              <span class="form-error">{{ form.last_name.errors.0 }}</span>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="id_password1">
+            {% lucide "lock" size="1rem" %} Password
+          </label>
+          <div class="input-password-wrap">
+            <input
+              type="password"
+              name="password1"
+              id="id_password1"
+              class="form-input {% if form.password1.errors %}input-error{% endif %}"
+              placeholder="Min. 8 characters"
+              autocomplete="new-password"
+            />
+            <button type="button" class="toggle-password" aria-label="Show password" tabindex="-1">
+              {% lucide "eye" size="1rem" %}
+            </button>
+          </div>
+          {% if form.password1.errors %}
+            <span class="form-error">{{ form.password1.errors.0 }}</span>
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="id_password2">
+            {% lucide "lock" size="1rem" %} Confirm Password
+          </label>
+          <div class="input-password-wrap">
+            <input
+              type="password"
+              name="password2"
+              id="id_password2"
+              class="form-input {% if form.password2.errors %}input-error{% endif %}"
+              placeholder="Repeat your password"
+              autocomplete="new-password"
+            />
+            <button type="button" class="toggle-password" aria-label="Show password" tabindex="-1">
+              {% lucide "eye" size="1rem" %}
+            </button>
+          </div>
+          {% if form.password2.errors %}
+            <span class="form-error">{{ form.password2.errors.0 }}</span>
+          {% endif %}
+        </div>
+
+        <button type="submit" class="btn btn-primary auth-submit">
+          {% lucide "rocket" size="1rem" %} Create Free Account
+        </button>
+
+      </form>
+
+      <p class="auth-switch">
+        Already have an account?
+        <a href="{% url 'login' %}">Log in →</a>
+      </p>
+
+    </div>
+  </div>
+</section>
+{% endblock %}
