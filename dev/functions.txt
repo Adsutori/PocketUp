@@ -1,0 +1,53 @@
+### Core Features
+
+* User registration and login
+* Financial dashboard overview
+* Add and edit expenses
+* Expense categories (food, transport, bills, etc.)
+* Monthly income and expense summary
+* Expense charts (e.g., pie charts / monthly charts)
+
+### Automation
+
+* Bank account integration (Open Banking)
+* Automatic transaction import
+* Automatic expense categorization
+
+### Savings
+
+* Net savings calculation (**income – expenses**)
+* Savings goals
+* Budget limit alerts
+
+### AI / Smart Features
+
+* AI expense analysis
+* Suggestions on how to save more money
+* Weekly and monthly summaries with insights
+* Financial chat (e.g., “How much did I spend on food?”)
+
+### Investments
+
+* Add investment portfolio
+* Track investment value
+* Suggestions for investing surplus money
+
+### Payments / Business Model
+
+* Fixed subscription (e.g., €4.99)
+* Alternatively **0.5% of monthly net savings**
+
+### UX / Additional Features
+
+* Notifications about spending and savings
+* Weekly financial reports
+* Gamification (goals and achievements)
+* Secure data storage
+
+---
+
+If you want, I can also break this down into **3 levels of features**:
+
+* **MVP (what to build first)**
+* **V2 (what to add later)**
+* **features that can make this a viral startup** 🚀
