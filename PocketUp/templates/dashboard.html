@@ -1,7 +1,222 @@
+{% load static %}
+{% load lucide %}
+
 <!DOCTYPE html>
-<html>
-<body>
-    <h1>Witaj, {{ user.nick }}! 👋</h1>
-    <a href="{% url 'logout' %}">Wyloguj</a>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PocketUp — Dashboard</title>
+  <link rel ="icon" href="{{ MEDIA_URL }}/layout/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body class="db-body">
+
+  <!-- ═══════════════════════════════════════════
+       SIDEBAR
+  ═══════════════════════════════════════════ -->
+  <aside class="db-sidebar" id="sidebar">
+
+    <div class="db-sidebar-brand">
+      <img class="nav-logo-img" src="{{ MEDIA_URL }}/layout/PocketUp_trans_logo_white.png" alt="Logo" />
+      <button class="db-sidebar-toggle" id="sidebarCollapseBtn" title="Collapse sidebar">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+    </div>
+
+    <nav class="db-nav">
+      <a href="{% url 'dashboard' %}" class="db-nav-link" data-page="dashboard">
+        <span class="db-nav-icon">{% lucide "house" %}</span>
+        <span class="db-nav-label">Dashboard</span>
+      </a>
+      <a href="" class="db-nav-link" data-page="transactions">
+        <span class="db-nav-icon">{% lucide "banknote" %}</span>
+        <span class="db-nav-label">Transactions</span>
+      </a>
+      <a href="" class="db-nav-link" data-page="budget">
+        <span class="db-nav-icon">{% lucide "piggy-bank" %}</span>
+        <span class="db-nav-label">Budget</span>
+      </a>
+      <a href="" class="db-nav-link" data-page="goals">
+        <span class="db-nav-icon">{% lucide "goal" %}</span>
+        <span class="db-nav-label">Goals</span>
+      </a>
+      <a href="" class="db-nav-link" data-page="reports">
+        <span class="db-nav-icon">{% lucide "chart-column" %}</span>
+        <span class="db-nav-label">Reports</span>
+      </a>
+      <a href="" class="db-nav-link" data-page="settings">
+        <span class="db-nav-icon">{% lucide "settings" %}</span>
+        <span class="db-nav-label">Settings</span>
+      </a>
+    </nav>
+
+  </aside>
+
+  <!-- ═══════════════════════════════════════════
+       MAIN WRAPPER
+  ═══════════════════════════════════════════ -->
+  <div class="db-main-wrapper" id="mainWrapper">
+
+    <!-- TOPBAR -->
+    <header class="db-topbar">
+      <div class="db-topbar-left">
+        <button class="db-hamburger" id="sidebarToggle" aria-label="Toggle sidebar">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <h1 class="db-page-title">Dashboard</h1>
+      </div>
+
+      <div class="db-topbar-right">
+        <form method="post" action="{% url 'logout' %}" id="logoutForm">
+          {% csrf_token %}
+          <button type="submit" class="db-logout-btn" title="Log out">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+          </button>
+        </form>
+
+        <div class="db-user-avatar" id="userAvatar" data-nick="{{ user.nick }}">
+          {% if user.avatar %}
+            <img src="{{ user.avatar.url }}" alt="{{ user.nick }}" class="db-avatar-img" />
+          {% else %}
+            <span class="db-avatar-initials" id="avatarInitials"></span>
+          {% endif %}
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="db-content">
+
+      <!-- Greeting -->
+      <div class="db-greeting reveal">
+        <p class="db-greeting-text">Good to see you back,</p>
+        <h2 class="db-greeting-name">{{ user.nick }} 👋</h2>
+      </div>
+
+      <!-- Summary Cards -->
+      <div class="db-cards-grid">
+
+        <div class="db-summary-card reveal d1">
+          <div class="db-summary-icon ic-green">
+            <i class="fa-solid fa-scale-balanced"></i>
+          </div>
+          <div class="db-summary-body">
+            <p class="db-summary-label">Total Balance</p>
+            <p class="db-summary-value">$12,480.00</p>
+            <span class="db-change up"><i class="fa-solid fa-arrow-trend-up"></i> +3.2% this month</span>
+          </div>
+        </div>
+
+        <div class="db-summary-card reveal d2">
+          <div class="db-summary-icon ic-blue">
+            <i class="fa-solid fa-circle-arrow-down"></i>
+          </div>
+          <div class="db-summary-body">
+            <p class="db-summary-label">Monthly Income</p>
+            <p class="db-summary-value green">$4,200.00</p>
+            <span class="db-change up"><i class="fa-solid fa-arrow-trend-up"></i> +1.8% vs last month</span>
+          </div>
+        </div>
+
+        <div class="db-summary-card reveal d3">
+          <div class="db-summary-icon ic-orange">
+            <i class="fa-solid fa-circle-arrow-up"></i>
+          </div>
+          <div class="db-summary-body">
+            <p class="db-summary-label">Monthly Expenses</p>
+            <p class="db-summary-value red">$1,930.50</p>
+            <span class="db-change down"><i class="fa-solid fa-arrow-trend-down"></i> +5.1% vs last month</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Chart + Transactions Row -->
+      <div class="db-lower-grid">
+
+        <!-- Spending Chart -->
+        <div class="db-widget reveal d1">
+          <div class="db-widget-header">
+            <span class="db-widget-title"><i class="fa-solid fa-chart-area"></i> Spending Chart</span>
+            <span class="db-card-badge badge-blue">March 2026</span>
+          </div>
+          <div class="db-chart-placeholder">
+            <i class="fa-solid fa-chart-area db-chart-icon"></i>
+            <p class="db-chart-label">Spending Chart</p>
+            <p class="db-chart-sub">Chart integration coming soon</p>
+          </div>
+        </div>
+
+        <!-- Recent Transactions -->
+        <div class="db-widget reveal d2">
+          <div class="db-widget-header">
+            <span class="db-widget-title"><i class="fa-solid fa-clock-rotate-left"></i> Recent Transactions</span>
+            <span class="db-card-badge badge-green">Last 7 days</span>
+          </div>
+          <div class="db-table-wrap">
+            <table class="db-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Description</th>
+                  <th>Category</th>
+                  <th>Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Mar 16</td>
+                  <td>Netflix Subscription</td>
+                  <td><span class="db-tag tag-purple">Entertainment</span></td>
+                  <td class="amount-neg">-$15.99</td>
+                </tr>
+                <tr>
+                  <td>Mar 15</td>
+                  <td>Salary Deposit</td>
+                  <td><span class="db-tag tag-green">Income</span></td>
+                  <td class="amount-pos">+$4,200.00</td>
+                </tr>
+                <tr>
+                  <td>Mar 14</td>
+                  <td>Grocery Store</td>
+                  <td><span class="db-tag tag-orange">Food</span></td>
+                  <td class="amount-neg">-$87.40</td>
+                </tr>
+                <tr>
+                  <td>Mar 13</td>
+                  <td>Electric Bill</td>
+                  <td><span class="db-tag tag-blue">Utilities</span></td>
+                  <td class="amount-neg">-$112.00</td>
+                </tr>
+                <tr>
+                  <td>Mar 11</td>
+                  <td>Freelance Payment</td>
+                  <td><span class="db-tag tag-green">Income</span></td>
+                  <td class="amount-pos">+$650.00</td>
+                </tr>
+                <tr>
+                  <td>Mar 10</td>
+                  <td>Gym Membership</td>
+                  <td><span class="db-tag tag-purple">Health</span></td>
+                  <td class="amount-neg">-$39.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Sidebar overlay (mobile) -->
+  <div class="db-overlay" id="sidebarOverlay"></div>
+
+  <script src="{% static 'js/dashboard.js' %}"></script>
 </body>
 </html>
