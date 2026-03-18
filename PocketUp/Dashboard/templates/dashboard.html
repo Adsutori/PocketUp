@@ -1,0 +1,122 @@
+{% extends "dashboard-layout.html" %}
+
+{% block content %}
+<!-- Greeting -->
+<div class="db-greeting reveal">
+  <p class="db-greeting-text">Good to see you back,</p>
+  <h2 class="db-greeting-name">{{ user.nick }} 👋</h2>
+</div>
+
+<!-- Summary Cards -->
+<div class="db-cards-grid">
+
+  <div class="db-summary-card reveal d1">
+    <div class="db-summary-icon ic-green">
+      <i class="fa-solid fa-scale-balanced"></i>
+    </div>
+    <div class="db-summary-body">
+      <p class="db-summary-label">Total Balance</p>
+      <p class="db-summary-value">$12,480.00</p>
+      <span class="db-change up"><i class="fa-solid fa-arrow-trend-up"></i> +3.2% this month</span>
+    </div>
+  </div>
+
+  <div class="db-summary-card reveal d2">
+    <div class="db-summary-icon ic-blue">
+      <i class="fa-solid fa-circle-arrow-down"></i>
+    </div>
+    <div class="db-summary-body">
+      <p class="db-summary-label">Monthly Income</p>
+      <p class="db-summary-value green">$4,200.00</p>
+      <span class="db-change up"><i class="fa-solid fa-arrow-trend-up"></i> +1.8% vs last month</span>
+    </div>
+  </div>
+
+  <div class="db-summary-card reveal d3">
+    <div class="db-summary-icon ic-orange">
+      <i class="fa-solid fa-circle-arrow-up"></i>
+    </div>
+    <div class="db-summary-body">
+      <p class="db-summary-label">Monthly Expenses</p>
+      <p class="db-summary-value red">$1,930.50</p>
+      <span class="db-change down"><i class="fa-solid fa-arrow-trend-down"></i> +5.1% vs last month</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- Chart + Transactions Row -->
+<div class="db-lower-grid">
+
+  <!-- Spending Chart -->
+  <div class="db-widget reveal d1">
+    <div class="db-widget-header">
+      <span class="db-widget-title"><i class="fa-solid fa-chart-area"></i> Spending Chart</span>
+      <span class="db-card-badge badge-blue">March 2026</span>
+    </div>
+    <div class="db-chart-placeholder">
+      <i class="fa-solid fa-chart-area db-chart-icon"></i>
+      <p class="db-chart-label">Spending Chart</p>
+      <p class="db-chart-sub">Chart integration coming soon</p>
+    </div>
+  </div>
+
+  <!-- Recent Transactions -->
+  <div class="db-widget reveal d2">
+    <div class="db-widget-header">
+      <span class="db-widget-title"><i class="fa-solid fa-clock-rotate-left"></i> Recent Transactions</span>
+      <span class="db-card-badge badge-green">Last 7 days</span>
+    </div>
+    <div class="db-table-wrap">
+      <table class="db-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mar 16</td>
+            <td>Netflix Subscription</td>
+            <td><span class="db-tag tag-purple">Entertainment</span></td>
+            <td class="amount-neg">-$15.99</td>
+          </tr>
+          <tr>
+            <td>Mar 15</td>
+            <td>Salary Deposit</td>
+            <td><span class="db-tag tag-green">Income</span></td>
+            <td class="amount-pos">+$4,200.00</td>
+          </tr>
+          <tr>
+            <td>Mar 14</td>
+            <td>Grocery Store</td>
+            <td><span class="db-tag tag-orange">Food</span></td>
+            <td class="amount-neg">-$87.40</td>
+          </tr>
+          <tr>
+            <td>Mar 13</td>
+            <td>Electric Bill</td>
+            <td><span class="db-tag tag-blue">Utilities</span></td>
+            <td class="amount-neg">-$112.00</td>
+          </tr>
+          <tr>
+            <td>Mar 11</td>
+            <td>Freelance Payment</td>
+            <td><span class="db-tag tag-green">Income</span></td>
+            <td class="amount-pos">+$650.00</td>
+          </tr>
+          <tr>
+            <td>Mar 10</td>
+            <td>Gym Membership</td>
+            <td><span class="db-tag tag-purple">Health</span></td>
+            <td class="amount-neg">-$39.00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

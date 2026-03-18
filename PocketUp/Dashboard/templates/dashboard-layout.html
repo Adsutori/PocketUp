@@ -1,0 +1,103 @@
+{% load static %}
+{% load lucide %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}PocketUp{% endblock %}</title>
+  <link rel ="icon" href="{{ MEDIA_URL }}/layout/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body class="db-body">
+
+  <!-- ═══════════════════════════════════════════
+       SIDEBAR
+  ═══════════════════════════════════════════ -->
+  <aside class="db-sidebar" id="sidebar">
+
+    <div class="db-sidebar-brand">
+      <img class="nav-logo-img" src="{{ MEDIA_URL }}/layout/PocketUp_trans_logo_white.png" alt="Logo" />
+      <button class="db-sidebar-toggle" id="sidebarCollapseBtn" title="Collapse sidebar">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+    </div>
+
+    <nav class="db-nav">
+      <a href="{% url 'dashboard' %}" class="db-nav-link" data-page="dashboard">
+        <span class="db-nav-icon">{% lucide "house" %}</span>
+        <span class="db-nav-label">Dashboard</span>
+      </a>
+      <a href="{% url 'transactions' %}" class="db-nav-link" data-page="transactions">
+        <span class="db-nav-icon">{% lucide "banknote" %}</span>
+        <span class="db-nav-label">Transactions</span>
+      </a>
+      <a href="{% url 'budget' %}" class="db-nav-link" data-page="budget">
+        <span class="db-nav-icon">{% lucide "piggy-bank" %}</span>
+        <span class="db-nav-label">Budget</span>
+      </a>
+      <a href="{% url 'goals' %}" class="db-nav-link" data-page="goals">
+        <span class="db-nav-icon">{% lucide "goal" %}</span>
+        <span class="db-nav-label">Goals</span>
+      </a>
+      <a href="{% url 'reports' %}" class="db-nav-link" data-page="reports">
+        <span class="db-nav-icon">{% lucide "chart-column" %}</span>
+        <span class="db-nav-label">Reports</span>
+      </a>
+      <a href="{% url 'settings' %}" class="db-nav-link" data-page="settings">
+        <span class="db-nav-icon">{% lucide "settings" %}</span>
+        <span class="db-nav-label">Settings</span>
+      </a>
+    </nav>
+
+  </aside>
+
+  <!-- ═══════════════════════════════════════════
+       MAIN WRAPPER
+  ═══════════════════════════════════════════ -->
+  <div class="db-main-wrapper" id="mainWrapper">
+
+    <!-- TOPBAR -->
+    <header class="db-topbar">
+      <div class="db-topbar-left">
+        <button class="db-hamburger" id="sidebarToggle" aria-label="Toggle sidebar">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <h1 class="db-page-title">Dashboard</h1>
+      </div>
+
+      <div class="db-topbar-right">
+        <form method="post" action="{% url 'logout' %}" id="logoutForm">
+          {% csrf_token %}
+          <button type="submit" class="db-logout-btn" title="Log out">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+          </button>
+        </form>
+
+        <div class="db-user-avatar" id="userAvatar" data-nick="{{ user.nick }}">
+          {% if user.avatar %}
+            <img src="{{ user.avatar.url }}" alt="{{ user.nick }}" class="db-avatar-img" />
+          {% else %}
+            <span class="db-avatar-initials" id="avatarInitials"></span>
+          {% endif %}
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="db-content">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+
+  <!-- Sidebar overlay (mobile) -->
+  <div class="db-overlay" id="sidebarOverlay"></div>
+
+  <script src="{% static 'js/dashboard.js' %}"></script>
+</body>
+</html>
