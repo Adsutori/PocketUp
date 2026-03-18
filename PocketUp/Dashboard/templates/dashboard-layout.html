@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{% block title %}PocketUp{% endblock %}</title>
+  <title>{% block title %}{% endblock %}</title>
   <link rel ="icon" href="{{ MEDIA_URL }}/layout/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -67,7 +67,7 @@
         <button class="db-hamburger" id="sidebarToggle" aria-label="Toggle sidebar">
           <i class="fa-solid fa-bars"></i>
         </button>
-        <h1 class="db-page-title">Dashboard</h1>
+        <h1 class="db-page-title">{% block topbar_title %}Dashboard{% endblock %}</h1>
       </div>
 
       <div class="db-topbar-right">

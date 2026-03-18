@@ -1,10 +1,13 @@
 {% extends "dashboard-layout.html" %}
 
+{% block title %}Dashboard | PocketUp{% endblock %}
+{% block topbar_title %}Dashboard{% endblock %}
+
 {% block content %}
 <!-- Greeting -->
 <div class="db-greeting reveal">
   <p class="db-greeting-text">Good to see you back,</p>
-  <h2 class="db-greeting-name">{{ user.nick }} 👋</h2>
+  <h2 class="db-greeting-name">{{ user.nick }} </h2>
 </div>
 
 <!-- Summary Cards -->
