@@ -44,6 +44,10 @@ INSTALLED_APPS = [
     'Users',
     'Dashboard',
     'Transactions',
+    'Budget',
+    'Goals',
+    'Reports',
+    'Settings',
 ]
 
 MIDDLEWARE = [

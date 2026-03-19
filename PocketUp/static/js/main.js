@@ -1,9 +1,3 @@
-/* ================================================================
-   POCKETUP — main.js
-   Encoding: UTF-8
-   Wymaga: Chart.js zaladowanego przed tym plikiem
-================================================================ */
-
 /* ----------------------------------------------------------------
    NAVBAR — scroll shadow + active link
 ---------------------------------------------------------------- */
@@ -536,7 +530,6 @@ document.querySelectorAll('.badge-item:not(.locked)').forEach(badge => {
       log.appendChild(msg);
       log.scrollTop = log.scrollHeight;
 
-      // Renderuje nowo dodane ikony Lucide
       lucide.createIcons();
   }
 

@@ -55,7 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
 const path = window.location.pathname;
 let matched = false;
 
-// Zbierz wszystkie linki posortowane od najdłuższego href (najbardziej szczegółowy)
 const sortedLinks = [...navLinks].sort((a, b) => 
   (b.getAttribute('href') || '').length - (a.getAttribute('href') || '').length
 );

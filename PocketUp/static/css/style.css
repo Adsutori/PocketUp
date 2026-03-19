@@ -1833,6 +1833,10 @@ footer {
   font-weight: 700;
 }
 
+.db-tag-uncategorized {
+  background-color: #6b7280;
+}
+
 .tag-green  { background: rgba(29, 185, 84, 0.15);  color: #4ade80; }
 .tag-blue   { background: rgba(56, 189, 248, 0.15); color: #7dd3fc; }
 .tag-orange { background: rgba(251, 146, 60, 0.15); color: #fb923c; }
@@ -2088,4 +2092,9 @@ footer {
 .transactions-header .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(29, 185, 84, 0.4);
+}
+
+.modal-box .form-input.input-error {
+  border-color: #f87171;
+  box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.15);
 }

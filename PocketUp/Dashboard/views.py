@@ -7,10 +7,6 @@ def dashboard(request):
     return render(request, 'dashboard.html')
 
 @login_required
-def budget(request):
-    return render(request, 'budget.html')
-
-@login_required
 def goals(request):
     return render(request, 'goals.html')
 
