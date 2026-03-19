@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'lucide',
     'Users',
     'Dashboard',
+    'Transactions',
 ]
 
 MIDDLEWARE = [

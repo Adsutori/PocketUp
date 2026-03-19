@@ -25,6 +25,7 @@ urlpatterns = [
     path('', views.landing_home, name="landing-home"),
     path('users/', include("Users.urls")),
     path('dashboard/', include("Dashboard.urls")),
+    path('transactions/', include("Transactions.urls")),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.BASE_DIR / 'static')
