@@ -4,18 +4,18 @@ from datetime import date
 
 
 DEFAULT_CATEGORIES = [
-    {"name": "Food & Dining",    "color": "#fb923c"},
-    {"name": "Transport",        "color": "#38bdf8"},
-    {"name": "Housing",          "color": "#a78bfa"},
-    {"name": "Entertainment",    "color": "#f472b6"},
-    {"name": "Health",           "color": "#4ade80"},
-    {"name": "Shopping",         "color": "#facc15"},
-    {"name": "Education",        "color": "#34d399"},
-    {"name": "Travel",           "color": "#60a5fa"},
-    {"name": "Utilities",        "color": "#94a3b8"},
-    {"name": "Income",           "color": "#1db954"},
-    {"name": "Savings",          "color": "#2dd4bf"},
-    {"name": "Other",            "color": "#6b7280"},
+    {"name": "Food & Dining",  "color": "#fb923c"},
+    {"name": "Transport",      "color": "#38bdf8"},
+    {"name": "Housing",        "color": "#a78bfa"},
+    {"name": "Entertainment",  "color": "#f472b6"},
+    {"name": "Health",         "color": "#4ade80"},
+    {"name": "Shopping",       "color": "#facc15"},
+    {"name": "Education",      "color": "#34d399"},
+    {"name": "Travel",         "color": "#60a5fa"},
+    {"name": "Utilities",      "color": "#94a3b8"},
+    {"name": "Income",         "color": "#1db954"},
+    {"name": "Savings",        "color": "#2dd4bf"},
+    {"name": "Other",          "color": "#6b7280"},
 ]
 
 
