@@ -1,0 +1,58 @@
+### MAIN DASHBOARD:
+
+* Greeting
+* Summary cards:
+    * Total Balance
+    * Monthly Income
+    * Monthly expenses
+* Spending chart
+* Recent Transactions (6 of them shown in the panel and the buttom 'See more' next to it) + button 'Add transaction'
+
+
+
+
+### AI:
+
+* s
+
+
+
+
+### TRANSACTIONS:
+
+* The table with all added transactions and the button 'Add transaction' on the top
+* table on hover the specific row shows settings button for deleting or editting transaction
+* Button 'Add static transaction' (or sth similar) for setting static transactions - like bills, some payments etc. 
+
+
+
+
+### BUDGET:
+
+s
+
+
+
+
+### GOALS:
+
+s
+
+
+
+
+### REPORTS:
+
+s
+
+
+
+
+### SETTINGS:
+
+s
+
+
+
+
+### USER_AVATAR:

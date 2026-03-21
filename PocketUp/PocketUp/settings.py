@@ -42,6 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'lucide',
     'Users',
+    'Dashboard',
+    'Transactions',
+    'Budget',
+    'Goals',
+    'Reports',
+    'Settings',
 ]
 
 MIDDLEWARE = [

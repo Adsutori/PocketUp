@@ -51,17 +51,30 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.innerWidth <= 768) closeSidebar();
   }));
 
-  // ── 3. Active nav link ────────────────────────────────────
-  const path = window.location.pathname;
-  let matched = false;
-  navLinks.forEach(link => {
-    const href = link.getAttribute('href');
-    if (href && href !== '/' && path.startsWith(href)) { link.classList.add('active'); matched = true; }
-    else if (href === '/' && path === '/')              { link.classList.add('active'); matched = true; }
-  });
-  if (!matched) {
-    document.querySelector('.db-nav-link[data-page="dashboard"]')?.classList.add('active');
+// ── 3. Active nav link ────────────────────────────────────
+const path = window.location.pathname;
+let matched = false;
+
+const sortedLinks = [...navLinks].sort((a, b) => 
+  (b.getAttribute('href') || '').length - (a.getAttribute('href') || '').length
+);
+
+sortedLinks.forEach(link => {
+  const href = link.getAttribute('href');
+  if (!href) return;
+  if (href === '/') {
+    if (path === '/') { link.classList.add('active'); matched = true; }
+  } else {
+    if (path === href || path.startsWith(href + '?') || path === href.replace(/\/$/, '')) {
+      if (!matched) { link.classList.add('active'); matched = true; }
+    }
   }
+});
+
+if (!matched) {
+  document.querySelector('.db-nav-link[data-page="dashboard"]')?.classList.add('active');
+}
+
 
   // ── 4. Tooltips (jeden globalny, position: fixed) ─────────
   const tooltip = document.createElement('div');
@@ -110,3 +123,4 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+
