@@ -98,7 +98,7 @@
                 <span class="db-tag db-tag-uncategorized">Uncategorized</span>
               {% endif %}
             </td>
-            <td class="{% if transaction.type == 'income' %}amount-pos{% else %}amount-neg{% endif %}">
+            <td class="{% if transaction.get_type_display == 'Income' %}amount-pos{% else %}amount-neg{% endif %}">
               {% if transaction.type == 'income' %}+{% else %}-{% endif %}${{ transaction.amount }}
             </td>
           </tr>

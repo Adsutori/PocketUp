@@ -1842,8 +1842,9 @@ footer {
 .tag-orange { background: rgba(251, 146, 60, 0.15); color: #fb923c; }
 .tag-purple { background: rgba(167, 139, 250, 0.15);color: #a78bfa; }
 
-.amount-pos { color: #4ade80; font-weight: 700; }
-.amount-neg { color: #f87171; font-weight: 700; }
+.amount-pos { color: #4ade80 !important; font-weight: 700; }
+.amount-neg { color: #f87171 !important; font-weight: 700; }
+
 
 /* ============================================================
    MOBILE OVERLAY
