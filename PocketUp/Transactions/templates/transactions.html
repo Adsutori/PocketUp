@@ -88,6 +88,7 @@
       <th>Description</th>
       <th>Category</th>
       <th>Amount</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -107,7 +108,24 @@
       <td class="{% if transaction.type == 'income' %}amount-pos{% else %}amount-neg{% endif %}">
         {% if transaction.type == 'income' %}+{% else %}-{% endif %}${{ transaction.amount }}
       </td>
+      <td>
+        <div style="display:flex; gap:6px;">
+          <button class="db-action-btn edit-btn"
+                  data-id="{{ transaction.pk }}"
+                  data-date="{{ transaction.date|date:'Y-m-d' }}"
+                  data-description="{{ transaction.description }}"
+                  data-amount="{{ transaction.amount }}"
+                  data-type="{{ transaction.type }}"
+                  data-category="{{ transaction.category.pk|default:'' }}">
+            <i class="fa-solid fa-pen"></i>
+          </button>
+          <button class="db-action-btn delete-btn" data-id="{{ transaction.pk }}">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
+      </td>
     </tr>
+
     {% empty %}
       <tr>
         <td colspan="4">No transactions yet.</td>
@@ -115,6 +133,50 @@
     {% endfor %}
   </tbody>
 </table>
+
+<!-- Edit Modal -->
+<div class="modal-overlay" id="editModal" style="display:none;">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h2><i class="fa-solid fa-pen"></i> Edit Transaction</h2>
+      <button class="modal-close" id="closeEditModal">&times;</button>
+    </div>
+
+    <div class="form-group">
+      <label>Date</label>
+      <input type="date" class="form-input" id="edit-date">
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <input type="text" class="form-input" id="edit-description">
+    </div>
+    <div class="form-group">
+      <label>Category</label>
+      <select class="form-input" id="edit-category">
+        <option value="">— No category —</option>
+        {% for category in categories %}
+          <option value="{{ category.pk }}">{{ category.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Amount</label>
+      <input type="number" step="0.01" class="form-input" id="edit-amount">
+    </div>
+    <div class="form-group">
+      <label>Type</label>
+      <select class="form-input" id="edit-type">
+        <option value="expense">Expense</option>
+        <option value="income">Income</option>
+      </select>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-secondary" id="cancelEdit">Cancel</button>
+      <button class="btn-primary"   id="saveEdit">Save changes</button>
+    </div>
+  </div>
+</div>
 
 <script>
   const modal = document.getElementById('modal');
@@ -128,6 +190,64 @@
       modal.style.display = 'none';
     }
   });
+
+  const editModal   = document.getElementById('editModal');
+  let   currentId   = null;
+
+  document.querySelectorAll('.edit-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentId = btn.dataset.id;
+      document.getElementById('edit-date').value        = btn.dataset.date;
+      document.getElementById('edit-description').value = btn.dataset.description;
+      document.getElementById('edit-amount').value      = btn.dataset.amount;
+      document.getElementById('edit-type').value        = btn.dataset.type;
+      document.getElementById('edit-category').value    = btn.dataset.category;
+      editModal.style.display = 'flex';
+    });
+  });
+
+  document.getElementById('closeEditModal').addEventListener('click', () => editModal.style.display = 'none');
+  document.getElementById('cancelEdit').addEventListener('click',     () => editModal.style.display = 'none');
+
+  document.getElementById('saveEdit').addEventListener('click', async () => {
+    const payload = {
+      date:        document.getElementById('edit-date').value,
+      description: document.getElementById('edit-description').value,
+      amount:      document.getElementById('edit-amount').value,
+      type:        document.getElementById('edit-type').value,
+      category_id: document.getElementById('edit-category').value,
+    };
+
+    const res = await fetch(`/transactions/edit/${currentId}/`, {
+      method:  'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken':  '{{ csrf_token }}',
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (res.ok) {
+      editModal.style.display = 'none';
+      location.reload();
+    }
+  });
+
+  document.querySelectorAll('.delete-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      if (!confirm('Are you sure you want to delete this transaction?')) return;
+
+      const res = await fetch(`/transactions/delete/${btn.dataset.id}/`, {
+        method:  'DELETE',
+        headers: { 'X-CSRFToken': '{{ csrf_token }}' },
+      });
+
+      if (res.ok) {
+        btn.closest('tr').remove();
+      }
+    });
+  });
 </script>
+
 
 {% endblock %}

@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models
 from datetime import date
+from django.utils import timezone
 
 
 DEFAULT_CATEGORIES = [
@@ -48,6 +49,7 @@ class Transaction(models.Model):
                       related_name='transactions'
                   )
     date        = models.DateField(default=date.today)
+    created_at  = models.DateTimeField(auto_now_add=True)
     description = models.CharField(max_length=255)
     category    = models.ForeignKey(
                       Category,

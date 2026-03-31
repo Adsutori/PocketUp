@@ -2099,3 +2099,30 @@ footer {
   border-color: #f87171;
   box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.15);
 }
+
+.db-action-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-xs);
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.06);
+  color: #64748b;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.db-action-btn.edit-btn:hover {
+  background: rgba(56,189,248,0.15);
+  border-color: rgba(56,189,248,0.3);
+  color: #38bdf8;
+}
+
+.db-action-btn.delete-btn:hover {
+  background: rgba(239,68,68,0.15);
+  border-color: rgba(239,68,68,0.3);
+  color: #f87171;
+}
