@@ -12,7 +12,11 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 from decouple import config
+import os
+from dotenv import load_dotenv
+from urllib.parse import urlparse, parse_qsl
 
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
@@ -87,14 +91,17 @@ WSGI_APPLICATION = 'PocketUp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':     config('DB_NAME'),
-        'USER':     config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST':     config('DB_HOST', default='localhost'),
-        'PORT':     config('DB_PORT', default='5432'),
+        'NAME': tmpPostgres.path.replace('/', ''),
+        'USER': tmpPostgres.username,
+        'PASSWORD': tmpPostgres.password,
+        'HOST': tmpPostgres.hostname,
+        'PORT': 5432,
+        'OPTIONS': dict(parse_qsl(tmpPostgres.query)),
     }
 }
 
@@ -145,16 +152,16 @@ STATICFILES_DIRS = [
 
 
 
-# Storage - Supabase
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# # Storage - Supabase
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-AWS_ACCESS_KEY_ID = config('SUPABASE_STORAGE_KEY')
-AWS_SECRET_ACCESS_KEY = config('SUPABASE_STORAGE_SECRET')
-AWS_STORAGE_BUCKET_NAME = 'avatars'
-AWS_S3_ENDPOINT_URL = config('SUPABASE_STORAGE_URL')
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = 'public-read'
-AWS_S3_REGION_NAME = 'eu-west-2'
+# AWS_ACCESS_KEY_ID = config('SUPABASE_STORAGE_KEY')
+# AWS_SECRET_ACCESS_KEY = config('SUPABASE_STORAGE_SECRET')
+# AWS_STORAGE_BUCKET_NAME = 'avatars'
+# AWS_S3_ENDPOINT_URL = config('SUPABASE_STORAGE_URL')
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_DEFAULT_ACL = 'public-read'
+# AWS_S3_REGION_NAME = 'eu-west-2'
 
 
 

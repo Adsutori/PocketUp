@@ -46,8 +46,12 @@
 
 ---
 
-If you want, I can also break this down into **3 levels of features**:
 
-* **MVP (what to build first)**
-* **V2 (what to add later)**
-* **features that can make this a viral startup** 🚀
+
+
+
+Krok	Feature	Dlaczego
+1	Edycja + usuwanie	Bez tego app jest niepraktyczna
+2	Filtrowanie + wyszukiwanie	Natychmiast poprawia UX
+3	Import CSV	Największy "wow effect" — dane z banku w 10 sekund
+4	Transakcje cykliczne	Eliminuje ręczne dodawanie powtarzających się płatności
