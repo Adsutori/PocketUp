@@ -14,10 +14,21 @@ class TransactionForm(forms.ModelForm):
             'type':        forms.Select(),
         }
 
-    def __init__(self, user, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user')
         super().__init__(*args, **kwargs)
-        self.fields['category'].queryset = Category.objects.filter(user=user)
-        self.fields['category'].empty_label = 'Uncategorized'
+
+        self.fields['category'].queryset = Category.objects.filter(user=self.user)
+        self.fields['category'].empty_label = None        # ← usuwa pustą opcję
+        self.fields['category'].required = True           # ← kategoria wymagana
+
+        # Set "Other" as default on new transactions
+        if not kwargs.get('instance'):
+            try:
+                other = Category.objects.get(user=self.user, name='Other')
+                self.fields['category'].initial = other.pk
+            except Category.DoesNotExist:
+                pass
 
         for field_name, field in self.fields.items():
             css = 'form-input'

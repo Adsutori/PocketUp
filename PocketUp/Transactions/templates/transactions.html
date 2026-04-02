@@ -81,6 +81,121 @@
   </div>
 </div>
 
+
+
+<form method="GET" class="search-filter-form" id="filterForm">
+
+  <!-- Search -->
+  <div class="search-bar-row">
+    <div class="search-input-wrap">
+      <i data-lucide="search" class="search-icon"></i>
+      <input type="text"
+             name="search"
+             placeholder="Search transactions..."
+             value="{{ filters.search }}"
+             class="search-input"
+             autocomplete="off">
+      {% if filters.search %}
+        <button type="button" class="search-clear" onclick="clearSearch()">
+          <i data-lucide="x"></i>
+        </button>
+      {% endif %}
+    </div>
+
+    <button type="button" class="filters-toggle-btn {% if filters.amount_min or filters.amount_max or filters.date_from or filters.date_to or filters.category %}active{% endif %}"
+            id="filtersToggle" onclick="toggleFilters()">
+      <i data-lucide="sliders-horizontal"></i>
+      <span>Filters</span>
+      <span class="filters-count" id="filtersCount" style="display:none"></span>
+    </button>
+  </div>
+
+  <!-- Filters -->
+  <div class="filters-panel" id="filtersPanel">
+    <div class="filters-panel-box">
+
+      <div class="filters-panel-inner">
+        <!-- Amount Range -->
+        <div class="filter-group">
+          <label class="filter-label">
+            <i data-lucide="banknote"></i> Amount range
+          </label>
+          <div class="range-display">
+            <span id="amountMinDisplay">{{ filters.amount_min|default:"0" }}</span>
+            <span class="range-sep">—</span>
+            <span id="amountMaxDisplay">{{ filters.amount_max|default:"10000" }}</span>
+          </div>
+          <div class="dual-range-wrap">
+            <div class="range-track">
+              <div class="range-fill" id="amountRangeFill"></div>
+            </div>
+            <input type="range" id="amountMinSlider" min="0" max="10000" step="10"
+                  value="{{ filters.amount_min|default:'0' }}"
+                  class="range-slider range-min" oninput="updateAmountRange(event)">
+            <input type="range" id="amountMaxSlider" min="0" max="10000" step="10"
+                  value="{{ filters.amount_max|default:'10000' }}"
+                  class="range-slider range-max" oninput="updateAmountRange(event)">
+          </div>
+          <input type="hidden" name="amount_min" id="amountMinInput" value="{{ filters.amount_min }}">
+          <input type="hidden" name="amount_max" id="amountMaxInput" value="{{ filters.amount_max }}">
+        </div>
+
+        <!-- Date Range -->
+        <div class="filter-group">
+          <label class="filter-label">
+            <i data-lucide="calendar"></i> Date range
+          </label>
+          <div class="range-display">
+            <span id="dateFromDisplay">{{ filters.date_from|default:"Start" }}</span>
+            <span class="range-sep">—</span>
+            <span id="dateToDisplay">{{ filters.date_to|default:"Today" }}</span>
+          </div>
+          <div class="date-inputs-row">
+            <input type="date" name="date_from" id="dateFrom"
+                  value="{{ filters.date_from }}"
+                  class="filter-date-input"
+                  oninput="updateDateDisplay()">
+            <span class="range-sep">—</span>
+            <input type="date" name="date_to" id="dateTo"
+                  value="{{ filters.date_to }}"
+                  class="filter-date-input"
+                  oninput="updateDateDisplay()">
+          </div>
+        </div>
+
+        <!-- Category -->
+        <div class="filter-group">
+          <label class="filter-label">
+            <i data-lucide="tag"></i> Category
+          </label>
+          <select name="category" class="filter-select">
+            <option value="">— All categories —</option>
+            {% for category in categories %}
+              <option value="{{ category.pk }}"
+                {% if filters.category == category.pk|stringformat:"s" %}selected{% endif %}>
+                {{ category.name }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <div class="filters-actions">
+        <a href="{% url 'transactions' %}" class="btn-filter-clear">
+          <i data-lucide="x"></i> Clear all
+        </a>
+        <button type="submit" class="btn-filter-apply">
+          <i data-lucide="check"></i> Apply filters
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+
+</form>
+
+
 <table class="db-table">
   <thead>
     <tr>
@@ -97,13 +212,9 @@
       <td>{{ transaction.date }}</td>
       <td>{{ transaction.description }}</td>
       <td>
-        {% if transaction.category %}
           <span class="db-tag" style="background-color: {{ transaction.category.color }}">
             {{ transaction.category.name }}
           </span>
-        {% else %}
-          <span class="db-tag db-tag-uncategorized">Uncategorized</span>
-        {% endif %}
       </td>
       <td class="{% if transaction.type == 'income' %}amount-pos{% else %}amount-neg{% endif %}">
         {% if transaction.type == 'income' %}+{% else %}-{% endif %}${{ transaction.amount }}

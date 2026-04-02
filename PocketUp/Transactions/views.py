@@ -4,27 +4,61 @@ from django.http import JsonResponse
 from .models import Transaction, Category
 from .forms import TransactionForm
 import json
+from django.db.models import Q
 
 
 @login_required
 def transactions(request):
     if request.method == 'POST':
-        form = TransactionForm(request.user, request.POST)
+        form = TransactionForm(data=request.POST, user=request.user)
         if form.is_valid():
             transaction = form.save(commit=False)
             transaction.user = request.user
             transaction.save()
             return redirect('transactions')
     else:
-        form = TransactionForm(request.user)
+        form = TransactionForm(user=request.user)
 
-    transactions = Transaction.objects.filter(user=request.user).order_by('-date', '-created_at')
-    categories   = Category.objects.filter(user=request.user)
+    qs = Transaction.objects.filter(user=request.user).order_by('-date', '-created_at')
+
+    search = request.GET.get('search', '').strip()
+    if search:
+        qs = qs.filter(description__icontains=search)
+
+    amount_min = request.GET.get('amount_min', '').strip()
+    amount_max = request.GET.get('amount_max', '').strip()
+    if amount_min:
+        qs = qs.filter(amount__gte=amount_min)
+    if amount_max:
+        qs = qs.filter(amount__lte=amount_max)
+
+    date_from = request.GET.get('date_from', '').strip()
+    date_to   = request.GET.get('date_to', '').strip()
+    if date_from:
+        qs = qs.filter(date__gte=date_from)
+    if date_to:
+        qs = qs.filter(date__lte=date_to)
+
+    category_id = request.GET.get('category', '').strip()
+    if category_id:
+        qs = qs.filter(category__pk=category_id)
+
+    categories = Category.objects.filter(user=request.user)
+
     return render(request, 'transactions.html', {
-        'transactions': transactions,
-        'form': form,
-        'categories': categories,
+        'transactions': qs,
+        'form':         form,
+        'categories':   categories,
+        'filters': {
+            'search':     search,
+            'amount_min': amount_min,
+            'amount_max': amount_max,
+            'date_from':  date_from,
+            'date_to':    date_to,
+            'category':   category_id,
+        }
     })
+
 
 
 @login_required

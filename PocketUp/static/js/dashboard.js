@@ -124,3 +124,89 @@ if (!matched) {
 
 });
 
+function toggleFilters() {
+  const panel = document.getElementById('filtersPanel');
+  const btn   = document.getElementById('filtersToggle');
+  panel.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const panel = document.getElementById('filtersPanel');
+  const btn   = document.getElementById('filtersToggle');
+  if (btn.classList.contains('active')) {
+    panel.classList.add('open');
+  }
+  updateAmountRange();
+  updateFiltersCount();
+});
+
+// ── Dual range ──
+function updateAmountRange(e) {
+  const minSlider = document.getElementById('amountMinSlider');
+  const maxSlider = document.getElementById('amountMaxSlider');
+  const fill      = document.getElementById('amountRangeFill');
+
+  let minVal = parseInt(minSlider.value);
+  let maxVal = parseInt(maxSlider.value);
+
+  if (minVal > maxVal) {
+    if (e && e.target === minSlider) {
+      minSlider.value = maxVal;
+      minVal = maxVal;
+    } else {
+      maxSlider.value = minVal;
+      maxVal = minVal;
+    }
+  }
+
+  const rangeMin = parseInt(minSlider.min);
+  const rangeMax = parseInt(minSlider.max);
+  const pctLeft  = ((minVal - rangeMin) / (rangeMax - rangeMin)) * 100;
+  const pctRight = ((maxVal - rangeMin) / (rangeMax - rangeMin)) * 100;
+
+  fill.style.left  = pctLeft  + '%';
+  fill.style.width = (pctRight - pctLeft) + '%';
+
+  document.getElementById('amountMinDisplay').textContent = minVal;
+  document.getElementById('amountMaxDisplay').textContent = maxVal;
+
+  document.getElementById('amountMinInput').value = minVal === rangeMin ? '' : minVal;
+  document.getElementById('amountMaxInput').value = maxVal === rangeMax ? '' : maxVal;
+}
+
+
+function updateDateDisplay() {
+  const from = document.getElementById('dateFrom').value;
+  const to   = document.getElementById('dateTo').value;
+  document.getElementById('dateFromDisplay').textContent = from || 'Start';
+  document.getElementById('dateToDisplay').textContent   = to   || 'Today';
+}
+
+function updateFiltersCount() {
+  const btn   = document.getElementById('filtersToggle');
+  const count = document.getElementById('filtersCount');
+  let active  = 0;
+
+  if (btn.classList.contains('active')) {
+    const params = new URLSearchParams(window.location.search);
+    ['amount_min','amount_max','date_from','date_to','category'].forEach(k => {
+      if (params.get(k)) active++;
+    });
+  }
+
+  if (active > 0) {
+    count.textContent    = active;
+    count.style.display  = 'flex';
+  } else {
+    count.style.display  = 'none';
+  }
+}
+
+// ── Clear search ──
+function clearSearch() {
+  const input = document.querySelector('.search-input');
+  input.value = '';
+  input.focus();
+}
+
