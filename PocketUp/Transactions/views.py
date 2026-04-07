@@ -153,8 +153,7 @@ def edit_recurring_transaction(request, pk):
         rt.amount      = data.get('amount', rt.amount)
         rt.type        = data.get('type', rt.type)
         rt.frequency   = data.get('frequency', rt.frequency)
-        rt.interval    = data.get('interval', rt.interval)
-        rt.start_date  = data.get('start_date', rt.start_date)
+        rt.interval    = int(data.get('interval', rt.interval))
         rt.end_date    = data.get('end_date') or None
 
         category_id = data.get('category_id')
@@ -162,6 +161,29 @@ def edit_recurring_transaction(request, pk):
             rt.category = get_object_or_404(Category, pk=category_id, user=request.user)
         else:
             rt.category = None
+
+        # ← start_date zmieniony = reset next_run
+        new_start = data.get('start_date')
+        if new_start:
+            from datetime import date
+            from dateutil.relativedelta import relativedelta
+
+            parsed = date.fromisoformat(new_start)
+            rt.start_date = parsed
+
+            # next_run = start_date jeśli w przyszłości, wpp przesuń do przodu
+            today = date.today()
+            next_run = parsed
+            delta_map = {
+                'daily':   relativedelta(days=rt.interval),
+                'weekly':  relativedelta(weeks=rt.interval),
+                'monthly': relativedelta(months=rt.interval),
+                'yearly':  relativedelta(years=rt.interval),
+            }
+            while next_run < today:
+                next_run += delta_map[rt.frequency]
+
+            rt.next_run = next_run
 
         rt.save()
         return JsonResponse({'status': 'ok'})
