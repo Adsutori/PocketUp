@@ -90,7 +90,7 @@
   </div>
 </div>
 
-<!-- Lista -->
+<!-- List -->
 <table class="db-table">
   <thead>
     <tr>
@@ -104,55 +104,72 @@
     </tr>
   </thead>
   <tbody>
-    {% for rt in recurring %}
-    <tr>
-      <td>{{ rt.description }}</td>
-      <td>
-        {% if rt.category %}
-          <span class="db-tag" style="background-color: {{ rt.category.color }}">
-            {{ rt.category.name }}
-          </span>
-        {% else %}
-          <span style="opacity:0.4;">—</span>
-        {% endif %}
-      </td>
-      <td class="{% if rt.type == 'income' %}amount-pos{% else %}amount-neg{% endif %}">
-        {% if rt.type == 'income' %}+{% else %}-{% endif %}${{ rt.amount }}
-      </td>
-      <td>Every {{ rt.interval }} {{ rt.frequency }}</td>
-      <td>{{ rt.next_run }}</td>
-      <td>
-        {% if rt.is_active %}
-          <span class="db-tag" style="background:#1a7a4a;">Active</span>
-        {% else %}
-          <span class="db-tag" style="background:#555;">Paused</span>
-        {% endif %}
-      </td>
-      <td>
+        {% for rt in recurring %}
+        <tr>
+        <td>{{ rt.description }}</td>
+        <td>
+            {% if rt.category %}
+            <span class="db-tag" style="background-color: {{ rt.category.color }}">
+                {{ rt.category.name }}
+            </span>
+            {% else %}
+            <span style="opacity:0.4;">—</span>
+            {% endif %}
+        </td>
+        <td class="{% if rt.type == 'income' %}amount-pos{% else %}amount-neg{% endif %}">
+            {% if rt.type == 'income' %}+{% else %}-{% endif %}${{ rt.amount }}
+        </td>
+        <td>Every {{ rt.interval }} {{ rt.frequency }}</td>
+        <td>{{ rt.next_run }}</td>
+        <td>
+            {% if rt.is_active %}
+            <span class="db-tag" style="background:#1a7a4a;">Active</span>
+            {% else %}
+            <span class="db-tag" style="background:#555;">Paused</span>
+            {% endif %}
+        </td>
+        <td>
         <div style="display:flex; gap:6px;">
-          <!-- Toggle active/pause -->
-          <form method="POST" style="margin:0;">
+
+            <!-- Edit -->
+            <button class="db-action-btn edit-recurring-btn"
+                    data-id="{{ rt.pk }}"
+                    data-description="{{ rt.description }}"
+                    data-amount="{{ rt.amount }}"
+                    data-type="{{ rt.type }}"
+                    data-frequency="{{ rt.frequency }}"
+                    data-interval="{{ rt.interval }}"
+                    data-start-date="{{ rt.start_date|date:'Y-m-d' }}"
+                    data-end-date="{{ rt.end_date|date:'Y-m-d' }}"
+                    data-category="{{ rt.category.pk|default:'' }}">
+            <i class="fa-solid fa-pen"></i>
+            </button>
+
+            <!-- Toggle active/pause -->
+            <form method="POST" style="margin:0;">
             {% csrf_token %}
             <input type="hidden" name="form_type" value="toggle">
             <input type="hidden" name="pk" value="{{ rt.pk }}">
             <button type="submit" class="db-action-btn"
                     title="{% if rt.is_active %}Pause{% else %}Resume{% endif %}">
-              <i class="fa-solid {% if rt.is_active %}fa-pause{% else %}fa-play{% endif %}"></i>
+                <i class="fa-solid {% if rt.is_active %}fa-pause{% else %}fa-play{% endif %}"></i>
             </button>
-          </form>
+            </form>
 
-          <!-- Delete -->
-          <form method="POST" style="margin:0;"
+            <!-- Delete -->
+            <form method="POST" style="margin:0;"
                 onsubmit="return confirm('Delete this recurring transaction?')">
             {% csrf_token %}
             <input type="hidden" name="form_type" value="delete">
             <input type="hidden" name="pk" value="{{ rt.pk }}">
             <button type="submit" class="db-action-btn delete-btn">
-              <i class="fa-solid fa-trash"></i>
+                <i class="fa-solid fa-trash"></i>
             </button>
-          </form>
+            </form>
+
         </div>
-      </td>
+        </td>
+
     </tr>
     {% empty %}
     <tr>
@@ -162,6 +179,68 @@
   </tbody>
 </table>
 
+<!-- Edit Modal -->
+<div class="modal-overlay" id="editRecurringModal" style="display:none;">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h2><i class="fa-solid fa-pen"></i> Edit Recurring Transaction</h2>
+      <button class="modal-close" id="closeEditRecurringModal">&times;</button>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Description</label>
+      <input type="text" class="form-input" id="er-description">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Category</label>
+      <select class="form-input" id="er-category">
+        <option value="">— No category —</option>
+        {% for cat in categories %}
+          <option value="{{ cat.pk }}">{{ cat.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Amount</label>
+      <input type="number" step="0.01" class="form-input" id="er-amount">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Type</label>
+      <select class="form-input" id="er-type">
+        <option value="expense">Expense</option>
+        <option value="income">Income</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Frequency</label>
+      <select class="form-input" id="er-frequency">
+        <option value="daily">Daily</option>
+        <option value="weekly">Weekly</option>
+        <option value="monthly">Monthly</option>
+        <option value="yearly">Yearly</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Every</label>
+      <input type="number" min="1" max="365" class="form-input" id="er-interval">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Start Date</label>
+      <input type="date" class="form-input" id="er-start-date">
+    </div>
+    <div class="form-group">
+      <label class="form-label">End Date <span style="opacity:0.5;font-size:0.85em;">(optional)</span></label>
+      <input type="date" class="form-input" id="er-end-date">
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-secondary" id="cancelEditRecurring">Cancel</button>
+      <button class="btn-primary"   id="saveEditRecurring">Save changes</button>
+    </div>
+  </div>
+</div>
+
+
 <script>
   {% if form.errors %}
     document.getElementById('modal-recurring').style.display = 'flex';
@@ -169,6 +248,59 @@
 
   document.getElementById('modal-recurring').addEventListener('click', function(e) {
     if (e.target === this) this.style.display = 'none';
+  });
+
+  // --- Edit ---
+  const editRecurringModal = document.getElementById('editRecurringModal');
+  let currentRecurringId = null;
+
+  document.querySelectorAll('.edit-recurring-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentRecurringId = btn.dataset.id;
+      document.getElementById('er-description').value  = btn.dataset.description;
+      document.getElementById('er-amount').value       = btn.dataset.amount;
+      document.getElementById('er-type').value         = btn.dataset.type;
+      document.getElementById('er-frequency').value    = btn.dataset.frequency;
+      document.getElementById('er-interval').value     = btn.dataset.interval;
+      document.getElementById('er-start-date').value   = btn.dataset.startDate;
+      document.getElementById('er-end-date').value     = btn.dataset.endDate;
+      document.getElementById('er-category').value     = btn.dataset.category;
+      editRecurringModal.style.display = 'flex';
+    });
+  });
+
+  document.getElementById('closeEditRecurringModal').addEventListener('click', () => editRecurringModal.style.display = 'none');
+  document.getElementById('cancelEditRecurring').addEventListener('click',     () => editRecurringModal.style.display = 'none');
+
+  editRecurringModal.addEventListener('click', function(e) {
+    if (e.target === this) this.style.display = 'none';
+  });
+
+  document.getElementById('saveEditRecurring').addEventListener('click', async () => {
+    const payload = {
+      description: document.getElementById('er-description').value,
+      amount:      document.getElementById('er-amount').value,
+      type:        document.getElementById('er-type').value,
+      frequency:   document.getElementById('er-frequency').value,
+      interval:    document.getElementById('er-interval').value,
+      start_date:  document.getElementById('er-start-date').value,
+      end_date:    document.getElementById('er-end-date').value,
+      category_id: document.getElementById('er-category').value,
+    };
+
+    const res = await fetch(`/transactions/recurring/edit/${currentRecurringId}/`, {
+      method:  'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken':  '{{ csrf_token }}',
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (res.ok) {
+      editRecurringModal.style.display = 'none';
+      location.reload();
+    }
   });
 </script>
 

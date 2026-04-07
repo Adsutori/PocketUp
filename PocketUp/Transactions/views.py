@@ -133,7 +133,37 @@ def recurring_transactions(request):
 
     recurring = RecurringTransaction.objects.filter(user=request.user).order_by('-created_at')
 
+    categories = Category.objects.filter(user=request.user)
+
     return render(request, 'recurring_transactions.html', {
-        'recurring': recurring,
-        'form': form,
+        'recurring':   recurring,
+        'form':        form,
+        'categories':  categories,
     })
+
+
+@login_required
+def edit_recurring_transaction(request, pk):
+    rt = get_object_or_404(RecurringTransaction, pk=pk, user=request.user)
+
+    if request.method == 'POST':
+        data = json.loads(request.body)
+
+        rt.description = data.get('description', rt.description).strip() or rt.description
+        rt.amount      = data.get('amount', rt.amount)
+        rt.type        = data.get('type', rt.type)
+        rt.frequency   = data.get('frequency', rt.frequency)
+        rt.interval    = data.get('interval', rt.interval)
+        rt.start_date  = data.get('start_date', rt.start_date)
+        rt.end_date    = data.get('end_date') or None
+
+        category_id = data.get('category_id')
+        if category_id:
+            rt.category = get_object_or_404(Category, pk=category_id, user=request.user)
+        else:
+            rt.category = None
+
+        rt.save()
+        return JsonResponse({'status': 'ok'})
+
+    return JsonResponse({'status': 'error'}, status=400)
