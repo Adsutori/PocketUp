@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
-from .models import Transaction, Category
-from .forms import TransactionForm
+from .models import Transaction, Category, RecurringTransaction
+from .forms import TransactionForm, RecurringTransactionForm
 import json
 from django.db.models import Q
 
@@ -12,7 +12,7 @@ def transactions(request):
     if request.method == 'POST':
         form = TransactionForm(data=request.POST, user=request.user)
         if form.is_valid():
-            transaction = form.save(commit=False)
+            transaction      = form.save(commit=False)
             transaction.user = request.user
             transaction.save()
             return redirect('transactions')
@@ -103,3 +103,37 @@ def delete_transaction(request, pk):
         return JsonResponse({'status': 'ok'})
     
     return JsonResponse({'status': 'error'}, status=400)
+
+
+@login_required
+def recurring_transactions(request):
+    if request.method == 'POST':
+        form_type = request.POST.get('form_type')
+
+        if form_type == 'add':
+            form = RecurringTransactionForm(data=request.POST, user=request.user)
+            if form.is_valid():
+                form.save()
+                return redirect('recurring_transactions')
+
+        elif form_type == 'delete':
+            pk = request.POST.get('pk')
+            get_object_or_404(RecurringTransaction, pk=pk, user=request.user).delete()
+            return redirect('recurring_transactions')
+
+        elif form_type == 'toggle':
+            pk = request.POST.get('pk')
+            rt = get_object_or_404(RecurringTransaction, pk=pk, user=request.user)
+            rt.is_active = not rt.is_active
+            rt.save()
+            return redirect('recurring_transactions')
+
+    else:
+        form = RecurringTransactionForm(user=request.user)
+
+    recurring = RecurringTransaction.objects.filter(user=request.user).order_by('-created_at')
+
+    return render(request, 'recurring_transactions.html', {
+        'recurring': recurring,
+        'form': form,
+    })

@@ -15,6 +15,10 @@ from decouple import config
 import os
 from dotenv import load_dotenv
 from urllib.parse import urlparse, parse_qsl
+import warnings
+from django.core.exceptions import ImproperlyConfigured
+
+warnings.filterwarnings('ignore', message='Accessing the database during app initialization')
 
 load_dotenv()
 
@@ -47,7 +51,7 @@ INSTALLED_APPS = [
     'lucide',
     'Users',
     'Dashboard',
-    'Transactions',
+    'Transactions.apps.TransactionsConfig',
     'Budget',
     'Goals',
     'Reports',
@@ -185,3 +189,16 @@ DEFAULT_FROM_EMAIL = f'PocketUp <{config("EMAIL_HOST_USER")}>'
 LOGIN_URL = '/users/login/'
 LOGIN_REDIRECT_URL = '/dashboard/'
 LOGOUT_REDIRECT_URL = '/'
+
+
+
+Q_CLUSTER = {
+    'name': 'PocketUp',
+    'workers': 2,
+    'timeout': 60,
+    'django_redis': 'default',
+}
+
+
+
+

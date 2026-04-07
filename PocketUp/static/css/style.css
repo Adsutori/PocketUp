@@ -2088,6 +2088,7 @@ footer {
   transition: var(--transition);
   box-shadow: var(--shadow-green);
   font-family: var(--font);
+  margin-left: 10px;
 }
 
 .transactions-header .btn-primary:hover {

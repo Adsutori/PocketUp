@@ -51,6 +51,5 @@
 
 
 
-2	Filtrowanie + wyszukiwanie	Natychmiast poprawia UX
-3	Import CSV	Największy "wow effect" — dane z banku w 10 sekund
-4	Transakcje cykliczne	Eliminuje ręczne dodawanie powtarzających się płatności
+3	Import CSV
+4	Transakcje cykliczne
